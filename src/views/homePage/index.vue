@@ -20,7 +20,7 @@
                   title="指标说明"
                   slot="action"
                 >
-                  <img src="../../assets/realtime.jpg"/>
+                  <img src="../../assets/realtime.jpg" />
                 </a-tooltip>
                 <div>
                   <mini-area />
@@ -43,7 +43,7 @@
                   title="指标说明"
                   slot="action"
                 >
-                  <img src="../../assets/total.jpg"/>
+                  <img src="../../assets/total.jpg" />
                 </a-tooltip>
                 <div>
 
@@ -66,7 +66,7 @@
                   title="指标说明"
                   slot="action"
                 >
-                  <img src="../../assets/electricity.jpg"/>
+                  <img src="../../assets/electricity.jpg" />
                 </a-tooltip>
                 <div>
                   <mini-area />
@@ -84,10 +84,8 @@
                 title="当日发电量"
                 :total="8846 | NumberFormat"
               >
-                <a-tooltip
-                  slot="action"
-                >
-                  <img src="../../assets/today.jpg"/>
+                <a-tooltip slot="action">
+                  <img src="../../assets/today.jpg" />
                 </a-tooltip>
                 <div>
                   <mini-area />
@@ -100,51 +98,48 @@
         </div>
       </div>
       <div class="middlecontent">
-        <div class="middle-left" >
+        <div class="middle-left">
           <div class="co">
             <span>
-              <img src="../../assets/co.jpg"/>
+              <img src="../../assets/co.jpg" />
               <i>二氧化碳</i>
             </span>
             <span>ggg</span>
           </div>
           <div class="coal">
             <span>
-              <img src="../../assets/coal.jpg"/>
+              <img src="../../assets/coal.jpg" />
               <i>标准煤</i>
             </span>
             <span>ggg</span>
           </div>
           <div class="tree">
             <span>
-              <img src="../../assets/tree.jpg"/>
+              <img src="../../assets/tree.jpg" />
               <i>植树</i>
             </span>
             <span>ggg</span>
           </div>
           <div class="dioxide">
             <span>
-              <img src="../../assets/so.jpg"/>
+              <img src="../../assets/so.jpg" />
               <i>二氧化硫</i>
             </span>
             <span>ggg</span>
           </div>
         </div>
         <div class="middle-ear">
-          <img src="../../assets/ear.jpg"/>
+          <img src="../../assets/ear.jpg" />
         </div>
         <div class="middle-right">
           <!-- <div class="page-header-index-wide"> -->
-          <a-card
-            :body-style="{ padding: '0px' }"
-          >
+          <a-card :body-style="{ padding: '0px' }">
             <div class="right-title">
               <span>等效小时数</span>
-              <span>显示所有电站<a-icon type="caret-down" /></span>
+              <span>显示所有电站
+                <a-icon type="caret-down" /></span>
             </div>
-            <rank-list
-              :list="rankList"
-            />
+            <rank-list :list="rankList" />
           </a-card>
           <!-- </div> -->
         </div>
@@ -153,7 +148,10 @@
       <div class="middlebottom">
         <div class="pie">
           <div class="left">
-            <a-icon type="left" style="color:white;fontSize:18px"/>
+            <a-icon
+              type="left"
+              style="color:white;fontSize:18px"
+            />
           </div>
 
           <!-- <a-row :gutter="24">
@@ -248,7 +246,10 @@
             </a-col>
           </a-row> -->
           <div class="right">
-            <a-icon type="right" style="color:white;fontSize:18px"/>
+            <a-icon
+              type="right"
+              style="color:white;fontSize:18px"
+            />
           </div>
         </div>
         <div class="line">
@@ -415,122 +416,122 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.content{
+.content {
   width: 100%;
   height: 100%;
-  background: url("../../assets/bg.jpg") no-repeat ;
-  .header{
+  background: url('../../assets/bg.jpg') no-repeat;
+  .header {
     width: 100%;
     height: 70px;
-    background: url("../../assets/header.jpg") no-repeat ;
+    background: url('../../assets/header.jpg') no-repeat;
   }
-  .middlepart{
+  .middlepart {
     margin-top: 20px;
     padding: 8px;
     box-sizing: border-box;
-    .middlecontent{
+    .middlecontent {
       display: flex;
-      div{
-        width:456px;
+      div {
+        width: 456px;
         height: 460px;
       }
-      .middle-left{
-        height:460px;
+      .middle-left {
+        height: 460px;
         // background-color: aqua;
         margin-right: 24px;
-        div{
+        div {
           width: 100%;
           height: 97px;
           line-height: 97px;
           margin-bottom: 24px;
-          background: url("../../assets/bar.jpg") no-repeat ;
-          span{
+          background: url('../../assets/bar.jpg') no-repeat;
+          span {
             text-align: center;
-            i{
-              font-style:normal;
-              color:white;
+            i {
+              font-style: normal;
+              color: white;
               font-size: 18px;
               font-weight: 800;
             }
-            &:first-child{
+            &:first-child {
               width: 209px;
               display: inline-block;
             }
-            &:last-child{
+            &:last-child {
               width: 241px;
               display: inline-block;
-               color:red;
+              color: red;
               font-size: 18px;
               font-weight: 800;
             }
           }
-          &:last-child{
+          &:last-child {
             margin-bottom: 0px;
           }
         }
-
       }
-      .middle-ear{
-        width:945px;
+      .middle-ear {
+        width: 945px;
         margin-right: 24px;
-        img{
+        img {
           width: 100%;
           height: 100%;
         }
-
       }
-      .middle-right{
-        .right-title{
+      .middle-right {
+        .right-title {
           width: 100%;
           height: 49px;
           border-bottom: 1px solid #ccc;
           padding: 15px 20px;
           box-sizing: border-box;
-          span{
-            &:first-child{
+          span {
+            &:first-child {
               font-size: 18px;
               font-weight: 800;
             }
-            &:last-child{
+            &:last-child {
               float: right;
-              i{
-
+              i {
                 margin-left: 10px;
               }
-
             }
           }
-
         }
-
       }
     }
-    .middlebottom{
+    .middlebottom {
       height: 270px;
       display: flex;
       margin-top: 20px;
-      div{
+      div {
         flex: 1;
         margin-right: 25px;
         background-color: aqua;
-        &:last-child{
+        &:last-child {
           margin-right: 0;
         }
       }
-      .pie{
+      .pie {
         position: relative;
 
-        div{
+        .left,
+        .right {
           display: inline-block;
           width: 29px;
           height: 55px;
           line-height: 55px;
           text-align: center;
           background-color: red;
-          &:last-child{
-            position: absolute;
-
-          }
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .left {
+          left: 0;
+        }
+        .right {
+          right: 0;
         }
       }
     }
