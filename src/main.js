@@ -18,6 +18,9 @@ import './core/lazy_use'
 import './utils/filter' // global filter
 import './components/global.less'
 import { Dialog } from '@/components'
+import VCharts from 'v-charts'
+
+Vue.use(VCharts)
 
 Vue.config.productionTip = false
 

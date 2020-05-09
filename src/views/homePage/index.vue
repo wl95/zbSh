@@ -1,224 +1,271 @@
 <template>
-  <div class="page-header-index-wide">
-    <a-row :gutter="24">
-      <a-col
-        :sm="24"
-        :md="12"
-        :xl="6"
-        :style="{ marginBottom: '24px' }"
-      >
-        <chart-card
-          :loading="loading"
-          title="总销售额"
-          total="￥126,560"
-        >
-          <a-tooltip
-            title="指标说明"
-            slot="action"
-          >
-            <a-icon type="info-circle-o" />
-          </a-tooltip>
-          <div>
-            <trend
-              flag="up"
-              style="margin-right: 16px;"
+  <div class="content">
+    <div class="header"></div>
+    <div class="middlepart">
+      <div class="middletop">
+        <div class="page-header-index-wide">
+          <a-row :gutter="24">
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
             >
-              <span slot="term">周同比</span>
-              12%
-            </trend>
-            <trend flag="down">
-              <span slot="term">日同比</span>
-              11%
-            </trend>
-          </div>
-          <template slot="footer">日均销售额<span>￥ 234.56</span></template>
-        </chart-card>
-      </a-col>
-      <a-col
-        :sm="24"
-        :md="12"
-        :xl="6"
-        :style="{ marginBottom: '24px' }"
-      >
-        <chart-card
-          :loading="loading"
-          title="访问量"
-          :total="8846 | NumberFormat"
-        >
-          <a-tooltip
-            title="指标说明"
-            slot="action"
-          >
-            <a-icon type="info-circle-o" />
-          </a-tooltip>
-          <div>
-            <mini-area />
-          </div>
-          <template slot="footer">日访问量<span> {{ '1234' | NumberFormat }}</span></template>
-        </chart-card>
-      </a-col>
-      <a-col
-        :sm="24"
-        :md="12"
-        :xl="6"
-        :style="{ marginBottom: '24px' }"
-      >
-        <chart-card
-          :loading="loading"
-          title="支付笔数"
-          :total="6560 | NumberFormat"
-        >
-          <a-tooltip
-            title="指标说明"
-            slot="action"
-          >
-            <a-icon type="info-circle-o" />
-          </a-tooltip>
-          <div>
-            <mini-bar />
-          </div>
-          <template slot="footer">转化率 <span>60%</span></template>
-        </chart-card>
-      </a-col>
-      <a-col
-        :sm="24"
-        :md="12"
-        :xl="6"
-        :style="{ marginBottom: '24px' }"
-      >
-        <chart-card
-          :loading="loading"
-          title="运营活动效果"
-          total="78%"
-        >
-          <a-tooltip
-            title="指标说明"
-            slot="action"
-          >
-            <a-icon type="info-circle-o" />
-          </a-tooltip>
-          <div>
-            <mini-progress
-              color="rgb(19, 194, 194)"
-              :target="80"
-              :percentage="78"
-              height="8px"
-            />
-          </div>
-          <template slot="footer">
-            <trend
-              flag="down"
-              style="margin-right: 16px;"
-            >
-              <span slot="term">同周比</span>
-              12%
-            </trend>
-            <trend flag="up">
-              <span slot="term">日环比</span>
-              80%
-            </trend>
-          </template>
-        </chart-card>
-      </a-col>
-    </a-row>
+              <chart-card
+                :loading="loading"
+                title="实时总功率"
+                :total="8846 | NumberFormat"
+              >
+                <a-tooltip
+                  title="指标说明"
+                  slot="action"
+                >
+                  <img src="../../assets/realtime.jpg"/>
+                </a-tooltip>
+                <div>
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
 
-    <a-card
-      :loading="loading"
-      :bordered="false"
-      :body-style="{padding: '0'}"
-    >
-      <div class="salesCard">
-        <a-tabs
-          default-active-key="1"
-          size="large"
-          :tab-bar-style="{marginBottom: '24px', paddingLeft: '16px'}"
-        >
-          <div
-            class="extra-wrapper"
-            slot="tabBarExtraContent"
-          >
-            <div class="extra-item">
-              <a>今日</a>
-              <a>本周</a>
-              <a>本月</a>
-              <a>本年</a>
-            </div>
-            <a-range-picker :style="{width: '256px'}" />
-          </div>
-          <a-tab-pane
-            loading="true"
-            tab="销售额"
-            key="1"
-          >
-            <a-row>
-              <a-col
-                :xl="16"
-                :lg="12"
-                :md="12"
-                :sm="24"
-                :xs="24"
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
+            >
+              <chart-card
+                :loading="loading"
+                title="装机总容量"
+                :total="8846 | NumberFormat"
               >
-                <bar
-                  :data="barData"
-                  title="销售额排行"
-                />
-              </a-col>
-              <a-col
-                :xl="8"
-                :lg="12"
-                :md="12"
-                :sm="24"
-                :xs="24"
+                <a-tooltip
+                  title="指标说明"
+                  slot="action"
+                >
+                  <img src="../../assets/total.jpg"/>
+                </a-tooltip>
+                <div>
+
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
+            >
+              <chart-card
+                :loading="loading"
+                title="累计发电量"
+                :total="8846 | NumberFormat"
               >
-                <rank-list
-                  title="门店销售排行榜"
-                  :list="rankList"
-                />
-              </a-col>
-            </a-row>
-          </a-tab-pane>
-          <a-tab-pane
-            tab="访问量"
-            key="2"
-          >
-            <a-row>
-              <a-col
-                :xl="16"
-                :lg="12"
-                :md="12"
-                :sm="24"
-                :xs="24"
+                <a-tooltip
+                  title="指标说明"
+                  slot="action"
+                >
+                  <img src="../../assets/electricity.jpg"/>
+                </a-tooltip>
+                <div>
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
+            >
+              <chart-card
+                :loading="loading"
+                title="当日发电量"
+                :total="8846 | NumberFormat"
               >
-                <bar
-                  :data="barData2"
-                  title="销售额趋势"
-                />
-              </a-col>
-              <a-col
-                :xl="8"
-                :lg="12"
-                :md="12"
-                :sm="24"
-                :xs="24"
-              >
-                <rank-list
-                  title="门店销售排行榜"
-                  :list="rankList"
-                />
-              </a-col>
-            </a-row>
-          </a-tab-pane>
-        </a-tabs>
+                <a-tooltip
+                  slot="action"
+                >
+                  <img src="../../assets/today.jpg"/>
+                </a-tooltip>
+                <div>
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
+
+          </a-row>
+
+        </div>
       </div>
-    </a-card>
+      <div class="middlecontent">
+        <div class="middle-left" >
+          <div class="co">
+            <span>
+              <img src="../../assets/co.jpg"/>
+              <i>二氧化碳</i>
+            </span>
+            <span>ggg</span>
+          </div>
+          <div class="coal">
+            <span>
+              <img src="../../assets/coal.jpg"/>
+              <i>标准煤</i>
+            </span>
+            <span>ggg</span>
+          </div>
+          <div class="tree">
+            <span>
+              <img src="../../assets/tree.jpg"/>
+              <i>植树</i>
+            </span>
+            <span>ggg</span>
+          </div>
+          <div class="dioxide">
+            <span>
+              <img src="../../assets/so.jpg"/>
+              <i>二氧化硫</i>
+            </span>
+            <span>ggg</span>
+          </div>
+        </div>
+        <div class="middle-ear">
+          <img src="../../assets/ear.jpg"/>
+        </div>
+        <div class="middle-right">
+          <!-- <div class="page-header-index-wide"> -->
+          <a-card
+            :body-style="{ padding: '0px' }"
+          >
+            <div class="right-title">
+              <span>等效小时数</span>
+              <span>显示所有电站<a-icon type="caret-down" /></span>
+            </div>
+            <rank-list
+              :list="rankList"
+            />
+          </a-card>
+          <!-- </div> -->
+        </div>
 
+      </div>
+      <div class="middlebottom">
+        <div class="pie">
+          <div class="left">
+            <a-icon type="left" style="color:white;fontSize:18px"/>
+          </div>
+
+          <!-- <a-row :gutter="24">
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
+            >
+              <chart-card
+                :loading="loading"
+                title="实时总功率"
+                :total="8846 | NumberFormat"
+              >
+                <a-tooltip
+                  title="指标说明"
+                  slot="action"
+                >
+                  <img src="../../assets/realtime.jpg"/>
+                </a-tooltip>
+                <div>
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
+
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
+            >
+              <chart-card
+                :loading="loading"
+                title="装机总容量"
+                :total="8846 | NumberFormat"
+              >
+                <a-tooltip
+                  title="指标说明"
+                  slot="action"
+                >
+                  <img src="../../assets/total.jpg"/>
+                </a-tooltip>
+                <div>
+
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
+            >
+              <chart-card
+                :loading="loading"
+                title="累计发电量"
+                :total="8846 | NumberFormat"
+              >
+                <a-tooltip
+                  title="指标说明"
+                  slot="action"
+                >
+                  <img src="../../assets/electricity.jpg"/>
+                </a-tooltip>
+                <div>
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
+            <a-col
+              :sm="24"
+              :md="12"
+              :xl="6"
+              :style="{ marginBottom: '24px' }"
+            >
+              <chart-card
+                :loading="loading"
+                title="当日发电量"
+                :total="8846 | NumberFormat"
+              >
+                <a-tooltip
+                  slot="action"
+                >
+                  <img src="../../assets/today.jpg"/>
+                </a-tooltip>
+                <div>
+                  <mini-area />
+                </div>
+              </chart-card>
+            </a-col>
+          </a-row> -->
+          <div class="right">
+            <a-icon type="right" style="color:white;fontSize:18px"/>
+          </div>
+        </div>
+        <div class="line">
+          <!-- <line-pack /> -->
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
-import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea } from '@/components'
+import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea, Radar } from '@/components'
 import { mixinDevice } from '@/utils/mixin'
+import LinePack from './LinePack'
 
 const barData = []
 const barData2 = []
@@ -330,7 +377,9 @@ export default {
     RankList,
     Bar,
     Trend,
+    Radar,
     NumberInfo,
+    LinePack,
     MiniSmoothArea
   },
   data () {
@@ -366,46 +415,167 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.extra-wrapper {
-  line-height: 55px;
-  padding-right: 24px;
+.content{
+  width: 100%;
+  height: 100%;
+  background: url("../../assets/bg.jpg") no-repeat ;
+  .header{
+    width: 100%;
+    height: 70px;
+    background: url("../../assets/header.jpg") no-repeat ;
+  }
+  .middlepart{
+    margin-top: 20px;
+    padding: 8px;
+    box-sizing: border-box;
+    .middlecontent{
+      display: flex;
+      div{
+        width:456px;
+        height: 460px;
+      }
+      .middle-left{
+        height:460px;
+        // background-color: aqua;
+        margin-right: 24px;
+        div{
+          width: 100%;
+          height: 97px;
+          line-height: 97px;
+          margin-bottom: 24px;
+          background: url("../../assets/bar.jpg") no-repeat ;
+          span{
+            text-align: center;
+            i{
+              font-style:normal;
+              color:white;
+              font-size: 18px;
+              font-weight: 800;
+            }
+            &:first-child{
+              width: 209px;
+              display: inline-block;
+            }
+            &:last-child{
+              width: 241px;
+              display: inline-block;
+               color:red;
+              font-size: 18px;
+              font-weight: 800;
+            }
+          }
+          &:last-child{
+            margin-bottom: 0px;
+          }
+        }
 
-  .extra-item {
-    display: inline-block;
-    margin-right: 24px;
+      }
+      .middle-ear{
+        width:945px;
+        margin-right: 24px;
+        img{
+          width: 100%;
+          height: 100%;
+        }
 
-    a {
-      margin-left: 24px;
+      }
+      .middle-right{
+        .right-title{
+          width: 100%;
+          height: 49px;
+          border-bottom: 1px solid #ccc;
+          padding: 15px 20px;
+          box-sizing: border-box;
+          span{
+            &:first-child{
+              font-size: 18px;
+              font-weight: 800;
+            }
+            &:last-child{
+              float: right;
+              i{
+
+                margin-left: 10px;
+              }
+
+            }
+          }
+
+        }
+
+      }
+    }
+    .middlebottom{
+      height: 270px;
+      display: flex;
+      margin-top: 20px;
+      div{
+        flex: 1;
+        margin-right: 25px;
+        background-color: aqua;
+        &:last-child{
+          margin-right: 0;
+        }
+      }
+      .pie{
+        position: relative;
+
+        div{
+          display: inline-block;
+          width: 29px;
+          height: 55px;
+          line-height: 55px;
+          text-align: center;
+          background-color: red;
+          &:last-child{
+            position: absolute;
+
+          }
+        }
+      }
     }
   }
 }
+// .extra-wrapper {
+//   line-height: 55px;
+//   padding-right: 24px;
 
-.antd-pro-pages-dashboard-analysis-twoColLayout {
-  position: relative;
-  display: flex;
-  display: block;
-  flex-flow: row wrap;
-}
+//   .extra-item {
+//     display: inline-block;
+//     margin-right: 24px;
 
-.antd-pro-pages-dashboard-analysis-salesCard {
-  height: calc(100% - 24px);
-  /deep/ .ant-card-head {
-    position: relative;
-  }
-}
+//     a {
+//       margin-left: 24px;
+//     }
+//   }
+// }
 
-.dashboard-analysis-iconGroup {
-  i {
-    margin-left: 16px;
-    color: rgba(0, 0, 0, 0.45);
-    cursor: pointer;
-    transition: color 0.32s;
-    color: black;
-  }
-}
-.analysis-salesTypeRadio {
-  position: absolute;
-  right: 54px;
-  bottom: 12px;
-}
+// .antd-pro-pages-dashboard-analysis-twoColLayout {
+//   position: relative;
+//   display: flex;
+//   display: block;
+//   flex-flow: row wrap;
+// }
+
+// .antd-pro-pages-dashboard-analysis-salesCard {
+//   height: calc(100% - 24px);
+//   /deep/ .ant-card-head {
+//     position: relative;
+//   }
+// }
+
+// .dashboard-analysis-iconGroup {
+//   i {
+//     margin-left: 16px;
+//     color: rgba(0, 0, 0, 0.45);
+//     cursor: pointer;
+//     transition: color 0.32s;
+//     color: black;
+//   }
+// }
+// .analysis-salesTypeRadio {
+//   position: absolute;
+//   right: 54px;
+//   bottom: 12px;
+// }
 </style>
