@@ -22,7 +22,7 @@
                 >
                   <img src="../../assets/realtime.jpg" />
                 </a-tooltip>
-                <div>
+                <div class="home-card">
                   <mini-area />
                 </div>
               </chart-card>
@@ -45,7 +45,7 @@
                 >
                   <img src="../../assets/total.jpg" />
                 </a-tooltip>
-                <div>
+                <div class="home-card">
 
                   <mini-area />
                 </div>
@@ -69,7 +69,7 @@
                 >
                   <img src="../../assets/electricity.jpg" />
                 </a-tooltip>
-                <div>
+                <div class="home-card">
                   <mini-area />
                 </div>
               </chart-card>
@@ -89,7 +89,7 @@
                 <a-tooltip slot="action">
                   <img src="../../assets/today.jpg" />
                 </a-tooltip>
-                <div>
+                <div class="home-card">
                   <mini-area />
                 </div>
               </chart-card>
@@ -176,13 +176,14 @@
               >
                 <div class="veRing">
                   <ve-ring
-                    :data="chartData"
+                    :data="chartData1"
                     :title="veRingTitle"
                     :legend-visible="false"
                     :settings="chartSettings"
-                    :graphic="graphic"
+                    :graphic="graphic1"
                     :extend="chartExtend"
-                    height="150px"
+                    :colors="colors"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -205,14 +206,15 @@
               >
                 <div class="veRing">
                   <ve-ring
-                    :data="chartData"
+                    :data="chartData2"
                     :legend-visible="false"
                     :settings="chartSettings"
                     :title="veRingTitle"
                     :tooltip-visible="false"
-                    :graphic="graphic"
+                    :graphic="graphic2"
+                    :colors="colors"
                     :extend="chartExtend"
-                    height="150px"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -234,13 +236,15 @@
               >
                 <div class="veRing">
                   <ve-ring
-                    :data="chartData"
+                    :data="chartData3"
                     :title="veRingTitle"
                     :legend-visible="false"
                     :settings="chartSettings"
-                    :graphic="graphic"
+                    :graphic="graphic3"
+                    :tooltip="tooltip"
+                    :colors="colors"
                     :extend="chartExtend"
-                    height="150px"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -263,12 +267,13 @@
                 <div class="veRing">
                   <ve-ring
                     :title="veRingTitle"
-                    :data="chartData"
+                    :data="chartData4"
+                    :colors="colors"
                     :legend-visible="false"
                     :settings="chartSettings"
-                    :graphic="graphic"
+                    :graphic="graphic4"
                     :extend="chartExtend"
-                    height="150px"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -291,8 +296,8 @@
           </div>
           <ve-line
             :data="lineChartData"
-            :settings="line"
-
+            :colors="colors1"
+            :settings="lineChartSettings"
             height="228px"
             :extend="lineChartSettings"
           ></ve-line>
@@ -305,24 +310,24 @@
 </template>
 
 <script>
-import moment from 'moment'
+// import moment from 'moment'
 import 'echarts/lib/component/title'
 import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea, Radar } from '@/components'
 import { mixinDevice } from '@/utils/mixin'
 import LinePack from './LinePack'
 
-const barData = []
-const barData2 = []
-for (let i = 0; i < 12; i += 1) {
-  barData.push({
-    x: `${i + 1}月`,
-    y: Math.floor(Math.random() * 1000) + 200
-  })
-  barData2.push({
-    x: `${i + 1}月`,
-    y: Math.floor(Math.random() * 1000) + 200
-  })
-}
+// const barData = []
+// const barData2 = []
+// for (let i = 0; i < 12; i += 1) {
+//   barData.push({
+//     x: `${i + 1}月`,
+//     y: Math.floor(Math.random() * 1000) + 200
+//   })
+//   barData2.push({
+//     x: `${i + 1}月`,
+//     y: Math.floor(Math.random() * 1000) + 200
+//   })
+// }
 
 const rankList = []
 for (let i = 0; i < 7; i++) {
@@ -332,83 +337,83 @@ for (let i = 0; i < 7; i++) {
   })
 }
 
-const searchUserData = []
-for (let i = 0; i < 7; i++) {
-  searchUserData.push({
-    x: moment().add(i, 'days').format('YYYY-MM-DD'),
-    y: Math.ceil(Math.random() * 10)
-  })
-}
-const searchUserScale = [
-  {
-    dataKey: 'x',
-    alias: '时间'
-  },
-  {
-    dataKey: 'y',
-    alias: '用户数',
-    min: 0,
-    max: 10
-  }]
+// const searchUserData = []
+// for (let i = 0; i < 7; i++) {
+//   searchUserData.push({
+//     x: moment().add(i, 'days').format('YYYY-MM-DD'),
+//     y: Math.ceil(Math.random() * 10)
+//   })
+// }
+// const searchUserScale = [
+//   {
+//     dataKey: 'x',
+//     alias: '时间'
+//   },
+//   {
+//     dataKey: 'y',
+//     alias: '用户数',
+//     min: 0,
+//     max: 10
+//   }]
 
-const searchTableColumns = [
-  {
-    dataIndex: 'index',
-    title: '排名',
-    width: 90
-  },
-  {
-    dataIndex: 'keyword',
-    title: '搜索关键词'
-  },
-  {
-    dataIndex: 'count',
-    title: '用户数'
-  },
-  {
-    dataIndex: 'range',
-    title: '周涨幅',
-    align: 'right',
-    sorter: (a, b) => a.range - b.range,
-    scopedSlots: { customRender: 'range' }
-  }
-]
-const searchData = []
-for (let i = 0; i < 50; i += 1) {
-  searchData.push({
-    index: i + 1,
-    keyword: `搜索关键词-${i}`,
-    count: Math.floor(Math.random() * 1000),
-    range: Math.floor(Math.random() * 100),
-    status: Math.floor((Math.random() * 10) % 2)
-  })
-}
+// const searchTableColumns = [
+//   {
+//     dataIndex: 'index',
+//     title: '排名',
+//     width: 90
+//   },
+//   {
+//     dataIndex: 'keyword',
+//     title: '搜索关键词'
+//   },
+//   {
+//     dataIndex: 'count',
+//     title: '用户数'
+//   },
+//   {
+//     dataIndex: 'range',
+//     title: '周涨幅',
+//     align: 'right',
+//     sorter: (a, b) => a.range - b.range,
+//     scopedSlots: { customRender: 'range' }
+//   }
+// ]
+// const searchData = []
+// for (let i = 0; i < 50; i += 1) {
+//   searchData.push({
+//     index: i + 1,
+//     keyword: `搜索关键词-${i}`,
+//     count: Math.floor(Math.random() * 1000),
+//     range: Math.floor(Math.random() * 100),
+//     status: Math.floor((Math.random() * 10) % 2)
+//   })
+// }
 
-const DataSet = require('@antv/data-set')
+// const DataSet = require('@antv/data-set')
 
-const sourceData = [
-  { item: '家用电器', count: 32.2 },
-  { item: '食用酒水', count: 21 },
-  { item: '个护健康', count: 17 },
-  { item: '服饰箱包', count: 13 },
-  { item: '母婴产品', count: 9 },
-  { item: '其他', count: 7.8 }
-]
+// const sourceData = [
+//   { item: '家用电器', count: 32.2 },
+//   { item: '食用酒水', count: 21 },
+//   { item: '个护健康', count: 17 },
+//   { item: '服饰箱包', count: 13 },
+//   { item: '母婴产品', count: 9 },
+//   { item: '其他', count: 7.8 }
+// ]
 
-const pieScale = [{
-  dataKey: 'percent',
-  min: 0,
-  formatter: '.0%'
-}]
+// const pieScale = [{
+//   dataKey: 'percent',
+//   min: 0,
+//   formatter: '.0%'
+// }]
 
-const dv = new DataSet.View().source(sourceData)
-dv.transform({
-  type: 'percent',
-  field: 'count',
-  dimension: 'item',
-  as: 'percent'
-})
-const pieData = dv.rows
+// const dv = new DataSet.View().source(sourceData)
+// dv.transform({
+//   type: 'percent',
+//   field: 'count',
+//   dimension: 'item',
+//   as: 'percent'
+// })
+// const pieData = dv.rows
 
 export default {
   name: 'Analysis',
@@ -433,18 +438,15 @@ export default {
         }
       }
       this.chartSettings = {
-        radius: ['50%', '60%'],
-          label: {
-            show: false
-          },
+        radius: [55, 40],
+        offsetY: 10,
+        label: {
+          show: false
+        },
         labelLine: {
           show: false
         },
-        title: {
-           textStyle: {
-           textAlign: 'center'
-          }
-        }
+        hoverAnimation: false
       }
 
       this.lineChartSettings = {
@@ -461,22 +463,64 @@ export default {
          }]
 
       }
-
-      this.graphic = [{
+      this.tooltip = {
+           trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        }
+      this.colors = ['#3964A5', '#619EF0']
+      this.colors1 = ['#F29253']
+      this.graphic1 = [{
           type: 'text',
           left: 'center',
           top: '43%',
           style: {
-              text: '82%',
-              textAlign: 'center',
-              fill: '#999999',
-              fontSize: 21,
-              color: '#4d4f5c'
+            text: '80%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
+          }
+      }]
+      this.graphic2 = [{
+          type: 'text',
+          left: 'center',
+          top: '43%',
+          style: {
+            text: '78%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
+          }
+      }]
+      this.graphic3 = [{
+          type: 'text',
+          left: 'center',
+          top: '43%',
+          style: {
+            text: '45%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
+          }
+      }]
+      this.graphic4 = [{
+          type: 'text',
+          left: 'center',
+          top: '43%',
+          style: {
+            text: '30%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
           }
       }]
       this.veRingTitle = {
         text: '当前功率',
-         left: 'center',
+        left: 'center',
+        top: 0,
         textStyle: {
           fontWeight: 'normal',
           fontSize: 14
@@ -488,32 +532,53 @@ export default {
       rankList,
 
       // 搜索用户数
-      searchUserData,
-      searchUserScale,
-      searchTableColumns,
-      searchData,
+      // searchUserData,
+      // searchUserScale,
+      // searchTableColumns,
+      // searchData,
 
-      barData,
-      barData2,
+      // barData,
+      // barData2,
 
       //
-      pieScale,
-      pieData,
-      sourceData,
-      pieStyle: {
-        stroke: '#fff',
-        lineWidth: 1
-      },
-      chartData: {
+      // pieScale,
+      // pieData,
+      // sourceData,
+      // pieStyle: {
+      //   stroke: '#fff',
+      //   lineWidth: 1
+      // },
+      chartData1: {
           columns: ['日期', '访问用户'],
-          radius: ['60px', '80px'],
-          color: ['rgb(203,155,255)', 'rgb(149,162,255)'],
           hoverAnimation: false,
           rows: [
-            { '日期': '1/1', '访问用户': 1393 },
-            { '日期': '1/2', '访问用户': 3530 }
+            { '日期': '1/1', '访问用户': 18 },
+            { '日期': '1/2', '访问用户': 82 }
           ]
-
+      },
+      chartData2: {
+          columns: ['日期', '访问用户'],
+          hoverAnimation: false,
+          rows: [
+            { '日期': '1/1', '访问用户': 22 },
+            { '日期': '1/2', '访问用户': 78 }
+          ]
+      },
+      chartData3: {
+          columns: ['日期', '访问用户'],
+          hoverAnimation: false,
+          rows: [
+            { '日期': '1/1', '访问用户': 55 },
+            { '日期': '1/2', '访问用户': 45 }
+          ]
+      },
+      chartData4: {
+          columns: ['日期', '访问用户'],
+          hoverAnimation: false,
+          rows: [
+            { '日期': '1/1', '访问用户': 70 },
+            { '日期': '1/2', '访问用户': 30 }
+          ]
       },
       lineChartData: {
         columns: ['日期', '今日发电量'],
@@ -559,6 +624,20 @@ export default {
     width: 100%;
     height: 70px;
     background: url('../../assets/header.jpg') no-repeat;
+  }
+  .home-card{
+    position: relative;
+    height: 100%;
+  }
+  .home-card:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top:-59px;
+    width: 102%;
+    height: 64px;
+    border-left: 1.2px solid #619EF1;
+    border-bottom: 1.2px solid #619EF1;
   }
   .middlepart {
     margin-top: 20px;
@@ -687,9 +766,10 @@ export default {
             font-weight: normal;
             .round{
               display: inline-block;
-              width: 10px;
-              height: 10px;
-              background-color: '#ff6500';
+              width: 8px;
+              height: 8px;
+              margin-right: 4px;
+              background-color: #ff6500;
               border-radius: 5px;
             }
           }

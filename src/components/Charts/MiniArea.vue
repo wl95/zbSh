@@ -1,6 +1,6 @@
 <template>
   <div class="antv-chart-mini">
-    <div class="chart-wrapper" :style="{ height: 46 }">
+    <div class="chart-wrapper" :style="{ height: 16 }">
       <v-chart :force-fit="true" :height="height" :data="data" :padding="[36, 0, 18, 0]">
         <v-tooltip />
         <v-smooth-area position="x*y" />
@@ -53,4 +53,7 @@ export default {
 
 <style lang="less" scoped>
   @import "chart";
+  .antv-chart-mini{
+    height: 100%;
+  }
 </style>
