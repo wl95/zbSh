@@ -646,13 +646,14 @@ export default {
     .middlecontent {
       display: flex;
       div {
-        width: 456px;
+
         height: 460px;
       }
       .middle-left {
+        width: 24.5%;
         height: 460px;
         // background-color: aqua;
-        margin-right: 24px;
+        margin-right: 25px;
         div {
           width: 100%;
           height: 97px;
@@ -688,7 +689,7 @@ export default {
         }
       }
       .middle-ear {
-        width: 945px;
+        width: 50%;
         margin-right: 24px;
         img {
           width: 100%;
@@ -696,6 +697,7 @@ export default {
         }
       }
       .middle-right {
+        width: 24.5%;
         .right-title {
           width: 100%;
           height: 49px;
