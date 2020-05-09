@@ -173,13 +173,14 @@
               >
                 <div class="veRing">
                   <ve-ring
-                    :data="chartData"
+                    :data="chartData1"
                     :title="veRingTitle"
                     :legend-visible="false"
                     :settings="chartSettings"
-                    :graphic="graphic"
+                    :graphic="graphic1"
                     :extend="chartExtend"
-                    height="150px"
+                    :colors="colors"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -201,14 +202,15 @@
               >
                 <div class="veRing">
                   <ve-ring
-                    :data="chartData"
+                    :data="chartData2"
                     :legend-visible="false"
                     :settings="chartSettings"
                     :title="veRingTitle"
                     :tooltip-visible="false"
-                    :graphic="graphic"
+                    :graphic="graphic2"
+                    :colors="colors"
                     :extend="chartExtend"
-                    height="150px"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -229,13 +231,15 @@
               >
                 <div class="veRing">
                   <ve-ring
-                    :data="chartData"
+                    :data="chartData3"
                     :title="veRingTitle"
                     :legend-visible="false"
                     :settings="chartSettings"
-                    :graphic="graphic"
+                    :graphic="graphic3"
+                    :tooltip="tooltip"
+                    :colors="colors"
                     :extend="chartExtend"
-                    height="150px"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -257,12 +261,13 @@
                 <div class="veRing">
                   <ve-ring
                     :title="veRingTitle"
-                    :data="chartData"
+                    :data="chartData4"
+                    :colors="colors"
                     :legend-visible="false"
                     :settings="chartSettings"
-                    :graphic="graphic"
+                    :graphic="graphic4"
                     :extend="chartExtend"
-                    height="150px"
+                    height="170px"
                   ></ve-ring>
                 </div>
               </a-card>
@@ -279,6 +284,7 @@
           <ve-line
             :data="lineChartData"
             :title="chartTitle"
+            :colors="colors1"
             :settings="lineChartSettings"
             height="270px"
           ></ve-line>
@@ -419,32 +425,71 @@ export default {
         }
       }
       this.chartSettings = {
-        radius: ['60%', '70%'],
-          label: {
-            show: false
-          },
+        radius: [55, 40],
+        offsetY: 10,
+        label: {
+          show: false
+        },
         labelLine: {
           show: false
         },
-        title: {
-           textStyle: {
-           textAlign: 'center'
-          }
-        }
+        hoverAnimation: false
       }
       this.lineChartSettings = {
 
       }
-      this.graphic = [{
+      this.tooltip = {
+           trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        }
+      this.colors = ['#3964A5', '#619EF0']
+      this.colors1 = ['#F29253']
+      this.graphic1 = [{
           type: 'text',
           left: 'center',
           top: '43%',
           style: {
-              text: '60%',
-              textAlign: 'center',
-              fill: '#999999',
-              fontSize: 21,
-              color: '#4d4f5c'
+            text: '80%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
+          }
+      }]
+      this.graphic2 = [{
+          type: 'text',
+          left: 'center',
+          top: '43%',
+          style: {
+            text: '78%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
+          }
+      }]
+      this.graphic3 = [{
+          type: 'text',
+          left: 'center',
+          top: '43%',
+          style: {
+            text: '45%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
+          }
+      }]
+      this.graphic4 = [{
+          type: 'text',
+          left: 'center',
+          top: '43%',
+          style: {
+            text: '30%',
+            textAlign: 'center',
+            fill: '#999999',
+            fontSize: 21,
+            color: '#4d4f5c'
           }
       }]
       this.chartTitle = {
@@ -456,7 +501,8 @@ export default {
       }
       this.veRingTitle = {
         text: '当前功率',
-         left: 'center',
+        left: 'center',
+        top: 0,
         textStyle: {
           fontWeight: 'normal',
           fontSize: 14
@@ -484,16 +530,37 @@ export default {
         stroke: '#fff',
         lineWidth: 1
       },
-      chartData: {
+      chartData1: {
           columns: ['日期', '访问用户'],
-          radius: ['60px', '80px'],
-          color: ['rgb(203,155,255)', 'rgb(149,162,255)'],
           hoverAnimation: false,
           rows: [
-            { '日期': '1/1', '访问用户': 1393 },
-            { '日期': '1/2', '访问用户': 3530 }
+            { '日期': '1/1', '访问用户': 18 },
+            { '日期': '1/2', '访问用户': 82 }
           ]
-
+      },
+      chartData2: {
+          columns: ['日期', '访问用户'],
+          hoverAnimation: false,
+          rows: [
+            { '日期': '1/1', '访问用户': 22 },
+            { '日期': '1/2', '访问用户': 78 }
+          ]
+      },
+      chartData3: {
+          columns: ['日期', '访问用户'],
+          hoverAnimation: false,
+          rows: [
+            { '日期': '1/1', '访问用户': 55 },
+            { '日期': '1/2', '访问用户': 45 }
+          ]
+      },
+      chartData4: {
+          columns: ['日期', '访问用户'],
+          hoverAnimation: false,
+          rows: [
+            { '日期': '1/1', '访问用户': 70 },
+            { '日期': '1/2', '访问用户': 30 }
+          ]
       },
       lineChartData: {
         columns: ['日期', '今日发电量'],
