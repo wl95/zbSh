@@ -14,7 +14,7 @@
               <chart-card
                 :loading="loading"
                 title="实时总功率"
-                :total="8846 | NumberFormat"
+                :total="12423 | NumberFormat"
               >
                 <a-tooltip
                   title="指标说明"
@@ -37,7 +37,7 @@
               <chart-card
                 :loading="loading"
                 title="装机总容量"
-                :total="8846 | NumberFormat"
+                :total="12423 | NumberFormat"
               >
                 <a-tooltip
                   title="指标说明"
@@ -60,7 +60,8 @@
               <chart-card
                 :loading="loading"
                 title="累计发电量"
-                :total="8846 | NumberFormat"
+                :total="60000 | NumberFormat"
+                unit="kwh"
               >
                 <a-tooltip
                   title="指标说明"
@@ -82,7 +83,8 @@
               <chart-card
                 :loading="loading"
                 title="当日发电量"
-                :total="8846 | NumberFormat"
+                :total="300000 | NumberFormat"
+                unit="kwh"
               >
                 <a-tooltip slot="action">
                   <img src="../../assets/today.jpg" />
@@ -104,28 +106,28 @@
               <img src="../../assets/co.jpg" />
               <i>二氧化碳</i>
             </span>
-            <span>ggg</span>
+            <span>126,560吨</span>
           </div>
           <div class="coal">
             <span>
               <img src="../../assets/coal.jpg" />
               <i>标准煤</i>
             </span>
-            <span>ggg</span>
+            <span>8,8846吨</span>
           </div>
           <div class="tree">
             <span>
               <img src="../../assets/tree.jpg" />
               <i>植树</i>
             </span>
-            <span>ggg</span>
+            <span>6,560棵</span>
           </div>
           <div class="dioxide">
             <span>
               <img src="../../assets/so.jpg" />
               <i>二氧化硫</i>
             </span>
-            <span>ggg</span>
+            <span>7,833吨</span>
           </div>
         </div>
         <div class="middle-ear">
@@ -170,6 +172,7 @@
                 :headStyle="{ textAlign: 'center' }"
                 title="电站1"
                 total="当前功率"
+                :style="{background:'#f7f7f7',height:'233px',width:'177px'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -198,6 +201,7 @@
                 :bordered="false"
                 :bodyStyle="{ padding: '5px' }"
                 :headStyle="{ textAlign: 'center' }"
+                :style="{height:'233px',width:'177px'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -226,6 +230,7 @@
                 total="当前功率"
                 :bodyStyle="{ padding: '5px' }"
                 :headStyle="{ textAlign: 'center' }"
+                :style="{height:'233px',width:'177px'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -253,6 +258,7 @@
                 :bordered="false"
                 :bodyStyle="{ padding: '5px' }"
                 :headStyle="{ textAlign: 'center' }"
+                :style="{height:'233px',width:'177px'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -276,11 +282,19 @@
           </div>
         </div>
         <div class="line">
+          <div class="title">
+            <span>今日发电量趋势图</span>
+            <p class="line-right">
+              <span class="round"></span>
+              <span>今日发电量</span>
+            </p>
+          </div>
           <ve-line
             :data="lineChartData"
-            :title="chartTitle"
-            :settings="lineChartSettings"
-            height="270px"
+            :settings="line"
+
+            height="228px"
+            :extend="lineChartSettings"
           ></ve-line>
         </div>
 
@@ -313,8 +327,8 @@ for (let i = 0; i < 12; i += 1) {
 const rankList = []
 for (let i = 0; i < 7; i++) {
   rankList.push({
-    name: '白鹭岛 ' + (i + 1) + ' 号店',
-    total: 1234.56 - i * 100
+    name: '西安电站',
+    total: '323,234KW'
   })
 }
 
@@ -419,7 +433,7 @@ export default {
         }
       }
       this.chartSettings = {
-        radius: ['60%', '70%'],
+        radius: ['50%', '60%'],
           label: {
             show: false
           },
@@ -432,28 +446,34 @@ export default {
           }
         }
       }
+
       this.lineChartSettings = {
+         legend: {
+           show: false
+         },
+         xAxis: [{
+           axisLine: {
+             lineStyle: {
+               type: 'dashed'
+             }
+
+           }
+         }]
 
       }
+
       this.graphic = [{
           type: 'text',
           left: 'center',
           top: '43%',
           style: {
-              text: '60%',
+              text: '82%',
               textAlign: 'center',
               fill: '#999999',
               fontSize: 21,
               color: '#4d4f5c'
           }
       }]
-      this.chartTitle = {
-        text: '今日发电量趋势图',
-         textStyle: {
-          fontSize: 14,
-          left: '30px'
-        }
-      }
       this.veRingTitle = {
         text: '当前功率',
          left: 'center',
@@ -507,7 +527,19 @@ export default {
           { '日期': '13:00', '今日发电量': 56 },
           { '日期': '13:30', '今日发电量': 28 }
         ]
+      },
+      line: {
+         xAxis: [{
+           axisLine: {
+             lineStyle: {
+               type: 'dashed'
+             }
+
+           }
+         }]
+
       }
+
     }
   },
   created () {
@@ -549,7 +581,7 @@ export default {
           margin-bottom: 24px;
           background: url('../../assets/bar.jpg') no-repeat;
           span {
-            text-align: center;
+
             i {
               font-style: normal;
               color: white;
@@ -559,12 +591,15 @@ export default {
             &:first-child {
               width: 50%;
               display: inline-block;
+              padding-left: 30px;
+              box-sizing: border-box;
             }
             &:last-child {
+              text-align: center;
               width: 49%;
               display: inline-block;
               color: red;
-              font-size: 18px;
+              font-size: 24px;
               font-weight: 800;
             }
           }
@@ -637,6 +672,27 @@ export default {
         }
         .right {
           right: 0;
+        }
+      }
+      .line{
+        .title{
+          padding: 7px 28px;
+          font-size: 18px;
+          font-weight: 800;
+
+          border-bottom: 1px solid #ccc;
+          .line-right{
+            font-size: 14px;
+            float: right;
+            font-weight: normal;
+            .round{
+              display: inline-block;
+              width: 10px;
+              height: 10px;
+              background-color: '#ff6500';
+              border-radius: 5px;
+            }
+          }
         }
       }
       .veRing {

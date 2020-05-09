@@ -18,9 +18,13 @@
       </div>
       <div class="total">
         <slot name="total">
-          <span>{{ typeof total === 'function' && total() || total+'MW' }}</span>
+          <span>{{ typeof total === 'function' && total() || total }}</span>
+        </slot>
+        <slot name="unit">
+          <span>{{ unit }}</span>
         </slot>
       </div>
+
     </div>
     <div class="chart-card-content">
       <div class="content-fix">
@@ -51,6 +55,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    unit: {
+       type: String,
+       default: 'MW'
     }
   }
 }
@@ -115,10 +123,15 @@ export default {
   word-break: break-all;
   white-space: nowrap;
   color: red;
+  font-weight: 700;
   margin-top: 4px;
   margin-bottom: 0;
   font-size: 30px;
   line-height: 38px;
   height: 38px;
+  span:last-child{
+    font-size: 14px;
+    font-weight: normal;
+  }
 }
 </style>
