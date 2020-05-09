@@ -153,29 +153,36 @@
               style="color:white;fontSize:18px"
             />
           </div>
-
-          <!-- <a-row :gutter="24">
+          <a-row
+            :gutter="36"
+            class="pieRow"
+          >
             <a-col
               :sm="24"
               :md="12"
               :xl="6"
               :style="{ marginBottom: '24px' }"
             >
-              <chart-card
+              <a-card
                 :loading="loading"
-                title="实时总功率"
-                :total="8846 | NumberFormat"
+                :bordered="false"
+                :bodyStyle="{ padding: '5px' }"
+                :headStyle="{ textAlign: 'center' }"
+                title="电站1"
+                total="当前功率"
               >
-                <a-tooltip
-                  title="指标说明"
-                  slot="action"
-                >
-                  <img src="../../assets/realtime.jpg"/>
-                </a-tooltip>
-                <div>
-                  <mini-area />
+                <div class="veRing">
+                  <ve-ring
+                    :data="chartData"
+                    :title="veRingTitle"
+                    :legend-visible="false"
+                    :settings="chartSettings"
+                    :graphic="graphic"
+                    :extend="chartExtend"
+                    height="150px"
+                  ></ve-ring>
                 </div>
-              </chart-card>
+              </a-card>
             </a-col>
 
             <a-col
@@ -184,22 +191,27 @@
               :xl="6"
               :style="{ marginBottom: '24px' }"
             >
-              <chart-card
+              <a-card
                 :loading="loading"
-                title="装机总容量"
-                :total="8846 | NumberFormat"
+                title="电站2"
+                total="当前功率"
+                :bordered="false"
+                :bodyStyle="{ padding: '5px' }"
+                :headStyle="{ textAlign: 'center' }"
               >
-                <a-tooltip
-                  title="指标说明"
-                  slot="action"
-                >
-                  <img src="../../assets/total.jpg"/>
-                </a-tooltip>
-                <div>
-
-                  <mini-area />
+                <div class="veRing">
+                  <ve-ring
+                    :data="chartData"
+                    :legend-visible="false"
+                    :settings="chartSettings"
+                    :title="veRingTitle"
+                    :tooltip-visible="false"
+                    :graphic="graphic"
+                    :extend="chartExtend"
+                    height="150px"
+                  ></ve-ring>
                 </div>
-              </chart-card>
+              </a-card>
             </a-col>
             <a-col
               :sm="24"
@@ -207,21 +219,26 @@
               :xl="6"
               :style="{ marginBottom: '24px' }"
             >
-              <chart-card
+              <a-card
                 :loading="loading"
-                title="累计发电量"
-                :total="8846 | NumberFormat"
+                title="电站3"
+                :bordered="false"
+                total="当前功率"
+                :bodyStyle="{ padding: '5px' }"
+                :headStyle="{ textAlign: 'center' }"
               >
-                <a-tooltip
-                  title="指标说明"
-                  slot="action"
-                >
-                  <img src="../../assets/electricity.jpg"/>
-                </a-tooltip>
-                <div>
-                  <mini-area />
+                <div class="veRing">
+                  <ve-ring
+                    :data="chartData"
+                    :title="veRingTitle"
+                    :legend-visible="false"
+                    :settings="chartSettings"
+                    :graphic="graphic"
+                    :extend="chartExtend"
+                    height="150px"
+                  ></ve-ring>
                 </div>
-              </chart-card>
+              </a-card>
             </a-col>
             <a-col
               :sm="24"
@@ -229,22 +246,28 @@
               :xl="6"
               :style="{ marginBottom: '24px' }"
             >
-              <chart-card
+              <a-card
                 :loading="loading"
-                title="当日发电量"
-                :total="8846 | NumberFormat"
+                title="电站4"
+                total="当前功率"
+                :bordered="false"
+                :bodyStyle="{ padding: '5px' }"
+                :headStyle="{ textAlign: 'center' }"
               >
-                <a-tooltip
-                  slot="action"
-                >
-                  <img src="../../assets/today.jpg"/>
-                </a-tooltip>
-                <div>
-                  <mini-area />
+                <div class="veRing">
+                  <ve-ring
+                    :title="veRingTitle"
+                    :data="chartData"
+                    :legend-visible="false"
+                    :settings="chartSettings"
+                    :graphic="graphic"
+                    :extend="chartExtend"
+                    height="150px"
+                  ></ve-ring>
                 </div>
-              </chart-card>
+              </a-card>
             </a-col>
-          </a-row> -->
+          </a-row>
           <div class="right">
             <a-icon
               type="right"
@@ -253,7 +276,12 @@
           </div>
         </div>
         <div class="line">
-          <!-- <line-pack /> -->
+          <ve-line
+            :data="lineChartData"
+            :title="chartTitle"
+            :settings="lineChartSettings"
+            height="270px"
+          ></ve-line>
         </div>
 
       </div>
@@ -264,6 +292,7 @@
 
 <script>
 import moment from 'moment'
+import 'echarts/lib/component/title'
 import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea, Radar } from '@/components'
 import { mixinDevice } from '@/utils/mixin'
 import LinePack from './LinePack'
@@ -384,6 +413,56 @@ export default {
     MiniSmoothArea
   },
   data () {
+     this.chartExtend = {
+        series: {
+          center: ['50%', '50%']
+        }
+      }
+      this.chartSettings = {
+        radius: ['60%', '70%'],
+          label: {
+            show: false
+          },
+        labelLine: {
+          show: false
+        },
+        title: {
+           textStyle: {
+           textAlign: 'center'
+          }
+        }
+      }
+      this.lineChartSettings = {
+
+      }
+      this.graphic = [{
+          type: 'text',
+          left: 'center',
+          top: '43%',
+          style: {
+              text: '60%',
+              textAlign: 'center',
+              fill: '#999999',
+              fontSize: 21,
+              color: '#4d4f5c'
+          }
+      }]
+      this.chartTitle = {
+        text: '今日发电量趋势图',
+         textStyle: {
+          fontSize: 14,
+          left: '30px'
+        }
+      }
+      this.veRingTitle = {
+        text: '当前功率',
+         left: 'center',
+        textStyle: {
+          fontWeight: 'normal',
+          fontSize: 14
+        }
+      }
+
     return {
       loading: true,
       rankList,
@@ -404,6 +483,30 @@ export default {
       pieStyle: {
         stroke: '#fff',
         lineWidth: 1
+      },
+      chartData: {
+          columns: ['日期', '访问用户'],
+          radius: ['60px', '80px'],
+          color: ['rgb(203,155,255)', 'rgb(149,162,255)'],
+          hoverAnimation: false,
+          rows: [
+            { '日期': '1/1', '访问用户': 1393 },
+            { '日期': '1/2', '访问用户': 3530 }
+          ]
+
+      },
+      lineChartData: {
+        columns: ['日期', '今日发电量'],
+        rows: [
+          { '日期': '10:00', '今日发电量': 18 },
+          { '日期': '10:30', '今日发电量': 30 },
+          { '日期': '11:00', '今日发电量': 20 },
+          { '日期': '11:30', '今日发电量': 28 },
+          { '日期': '12:00', '今日发电量': 58 },
+          { '日期': '12:30', '今日发电量': 26 },
+          { '日期': '13:00', '今日发电量': 56 },
+          { '日期': '13:30', '今日发电量': 28 }
+        ]
       }
     }
   },
@@ -454,11 +557,11 @@ export default {
               font-weight: 800;
             }
             &:first-child {
-              width: 209px;
+              width: 50%;
               display: inline-block;
             }
             &:last-child {
-              width: 241px;
+              width: 49%;
               display: inline-block;
               color: red;
               font-size: 18px;
@@ -504,17 +607,18 @@ export default {
       height: 270px;
       display: flex;
       margin-top: 20px;
-      div {
+      box-sizing: border-box;
+      > div {
         flex: 1;
         margin-right: 25px;
-        background-color: aqua;
+        background-color: #fff;
         &:last-child {
           margin-right: 0;
         }
       }
       .pie {
         position: relative;
-
+        padding: 20px 20px;
         .left,
         .right {
           display: inline-block;
@@ -526,6 +630,7 @@ export default {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
+          z-index: 999;
         }
         .left {
           left: 0;
@@ -533,6 +638,12 @@ export default {
         .right {
           right: 0;
         }
+      }
+      .veRing {
+        height: 100px;
+      }
+      .pieRow {
+        margin: 0 !important;
       }
     }
   }
