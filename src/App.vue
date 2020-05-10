@@ -22,3 +22,9 @@ export default {
   }
 }
 </script>
+<style>
+body,html,#app{
+  width:100%;
+  overflow-x: hidden;
+}
+</style>
