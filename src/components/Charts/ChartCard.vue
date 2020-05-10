@@ -1,7 +1,7 @@
 <template>
   <a-card
     :loading="loading"
-    :body-style="{ padding: '20px 24px 8px' }"
+    :body-style="{ padding: '20px 24px 8px', height: '200px' }"
     :bordered="false"
   >
     <div class="chart-card-header">
@@ -16,8 +16,8 @@
         </span>
 
       </div>
-      <div class="total">
-        <slot name="total">
+      <div class="total" :style="{fontSize:'40px'}">
+        <slot name="total" >
           <span>{{ typeof total === 'function' && total() || total }}</span>
         </slot>
         <slot name="unit">

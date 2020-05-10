@@ -1,7 +1,7 @@
 <template>
   <a-config-provider :locale="locale">
     <div id="app">
-      <router-view/>
+      <router-view />
     </div>
   </a-config-provider>
 </template>
@@ -17,8 +17,6 @@ export default {
       locale: zhCN
     }
   },
-  mounted () {
-
-  }
+  mounted () {}
 }
 </script>
