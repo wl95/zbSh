@@ -25,6 +25,10 @@ export default {
 <style>
 body,html,#app{
   width:100%;
-  overflow-x: hidden;
+  height: 100%;
+  overflow: hidden;
+}
+#app{
+  overflow-y: scroll
 }
 </style>
