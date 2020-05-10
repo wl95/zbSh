@@ -691,6 +691,15 @@ export default {
             font-weight: 800;
             color: #e60012;
           }
+          @media screen and (min-width:1700px) {
+             .midText-left {
+               font-size: 24px;
+             }
+               >span{
+                padding-right: 4%;
+                font-size: 36px;
+              }
+          }
         }
       }
       .middle-ear {
