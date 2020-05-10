@@ -1,14 +1,14 @@
 <template>
   <a-card
     :loading="loading"
-    :body-style="{ padding: '20px 24px 8px', height: '200px' }"
+    :body-style="{ padding:0, height: '180px' }"
     :bordered="false"
   >
     <div class="chart-card-header">
       <div class="meta">
-        <span class="chart-card-action">
+        <div class="chart-card-action">
           <slot name="action"></slot>
-        </span>
+        </div>
         <span class="chart-card-title">
           <slot name="title">
             {{ title }}
@@ -70,14 +70,20 @@ export default {
   .meta {
     position: relative;
     overflow: hidden;
-    padding: 4px;
     box-sizing: border-box;
     width: 100%;
     color: black;
     font-size: 18px;
     font-weight: 800;
-    line-height: 22px;
+    height: 40px;
+    line-height: 40px;
     border-bottom: 1px solid #ccc;
+    .chart-card-action{
+      overflow: hidden;
+      width: 46px;
+      float: left;
+      margin-right: 5px;
+    }
     .chart-card-title{
       font-size: 24px;
     }
@@ -105,7 +111,9 @@ export default {
   margin-bottom: 12px;
   position: relative;
   height: 46px;
-  width: 100%;
+  width: 90%;
+  left: 20px;
+  top: 26px;
   // border-left: 1px solid #3f93f7;
   // border-bottom: 1px solid #3f93f7;
 

@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="header"></div>
+    <div class="header"><img src="../../assets/header.jpg"/></div>
     <div class="middlepart">
       <div class="middletop">
         <div class="page-header-index-wide">
@@ -17,7 +17,7 @@
                 :total="12423 | NumberFormat"
               >
                 <a-tooltip
-                  title="指标说明"
+                  title="实时总功率"
                   slot="action"
                 >
                   <img src="../../assets/realtime.jpg" />
@@ -40,7 +40,7 @@
                 :total="12423 | NumberFormat"
               >
                 <a-tooltip
-                  title="指标说明"
+                  title="装机总容量"
                   slot="action"
                 >
                   <img src="../../assets/total.jpg" />
@@ -64,7 +64,7 @@
                 unit="kwh"
               >
                 <a-tooltip
-                  title="指标说明"
+                  title="累计发电量"
                   slot="action"
                 >
                   <img src="../../assets/electricity.jpg" />
@@ -86,7 +86,7 @@
                 :total="300000 | NumberFormat"
                 unit="kwh"
               >
-                <a-tooltip slot="action">
+                <a-tooltip title="当日发电量" slot="action">
                   <img src="../../assets/today.jpg" />
                 </a-tooltip>
                 <div class="home-card">
@@ -101,32 +101,32 @@
       </div>
       <div class="middlecontent">
         <div class="middle-left">
-          <div class="co">
-            <span>
+          <div class="midLeft-text">
+            <div class="midText-left">
               <img src="../../assets/co.jpg" />
-              <i>二氧化碳</i>
-            </span>
+              <span>二氧化碳</span>
+            </div>
             <span>126,560吨</span>
           </div>
-          <div class="coal">
-            <span>
+          <div class="midLeft-text">
+            <div class="midText-left">
               <img src="../../assets/coal.jpg" />
-              <i>标准煤</i>
-            </span>
+              <span>标准煤</span>
+            </div>
             <span>8,8846吨</span>
           </div>
-          <div class="tree">
-            <span>
+          <div class="midLeft-text">
+            <div class="midText-left">
               <img src="../../assets/tree.jpg" />
-              <i>植树</i>
-            </span>
+              <span>植树</span>
+            </div>
             <span>6,560棵</span>
           </div>
-          <div class="dioxide">
-            <span>
+          <div class="midLeft-text">
+            <div class="midText-left">
               <img src="../../assets/so.jpg" />
-              <i>二氧化硫</i>
-            </span>
+              <span>二氧化硫</span>
+            </div>
             <span>7,833吨</span>
           </div>
         </div>
@@ -622,7 +622,9 @@ export default {
   .header {
     width: 100%;
     height: 70px;
-    background: url('../../assets/header.jpg') no-repeat;
+    >img{
+      width: 100%;
+    }
   }
   .home-card{
     position: relative;
@@ -648,46 +650,46 @@ export default {
     box-sizing: border-box;
     .middlecontent {
       display: flex;
-      div {
-
-        height: 460px;
-      }
       .middle-left {
         width: 24.5%;
         height: 460px;
         // background-color: aqua;
         margin-right: 25px;
-        div {
+        .midLeft-text {
           width: 100%;
           height: 97px;
           line-height: 97px;
           margin-bottom: 24px;
           background: url('../../assets/bar.jpg') no-repeat;
-          span {
-
-            i {
-              font-style: normal;
-              color: white;
-              font-size: 26px;
-              font-weight: 800;
-            }
-            &:first-child {
-              width: 50%;
-              display: inline-block;
-              padding-left: 8px;
-              box-sizing: border-box;
-            }
-            &:last-child {
-              text-align: center;
-              width: 49%;
-              display: inline-block;
-              color: red;
-              font-size: 36px;
-              font-weight: 800;
-            }
+          .midText-left {
+            width: 52%;
+            padding-left: 8px;
+            display: inline-block;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            // &:first-child {
+            //   width: 48%;
+            //   display: inline-block;
+            //   padding-left: 8px;
+            //   box-sizing: border-box;
+            // }
+            // &:last-child {
+            //   text-align: center;
+            //   width: 46%;
+            //   display: inline-block;
+            //   color: #e60012;
+            //   font-size: 32px;
+            //   font-weight: 800;
+            // }
           }
-          &:last-child {
-            margin-bottom: 0px;
+          >span{
+            width: 46%;
+            display: inline-block;
+            font-size: 29px;
+            text-align: right;
+            font-weight: 800;
+            color: #e60012;
           }
         }
       }
@@ -701,6 +703,9 @@ export default {
       }
       .middle-right {
         width: 24.5%;
+        >.ant-card{
+          height: 460px;
+        }
         .right-title {
           width: 100%;
           height: 49px;
@@ -788,6 +793,13 @@ export default {
         margin: 0 !important;
       }
     }
+  }
+}
+.chart-card-action{
+  img{
+    width: 30px;
+    margin-left: 18px;
+    height: 22px;
   }
 }
 // .extra-wrapper {
