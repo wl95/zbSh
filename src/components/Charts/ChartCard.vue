@@ -80,6 +80,9 @@ export default {
     font-weight: 800;
     line-height: 22px;
     border-bottom: 1px solid #ccc;
+    .chart-card-title{
+      font-size: 24px;
+    }
   }
 }
 
@@ -129,8 +132,11 @@ export default {
   font-size: 30px;
   line-height: 38px;
   height: 38px;
+  span{
+    font-size: 36px;
+  }
   span:last-child{
-    font-size: 14px;
+    font-size: 20px;
     font-weight: normal;
   }
 }

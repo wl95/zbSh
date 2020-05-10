@@ -316,18 +316,18 @@ import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, Numbe
 import { mixinDevice } from '@/utils/mixin'
 import LinePack from './LinePack'
 
-// const barData = []
-// const barData2 = []
-// for (let i = 0; i < 12; i += 1) {
-//   barData.push({
-//     x: `${i + 1}月`,
-//     y: Math.floor(Math.random() * 1000) + 200
-//   })
-//   barData2.push({
-//     x: `${i + 1}月`,
-//     y: Math.floor(Math.random() * 1000) + 200
-//   })
-// }
+const barData = []
+const barData2 = []
+for (let i = 0; i < 12; i += 1) {
+  barData.push({
+    x: `${i + 1}月`,
+    y: Math.floor(Math.random() * 1000) + 200
+  })
+  barData2.push({
+    x: `${i + 1}月`,
+    y: Math.floor(Math.random() * 1000) + 200
+  })
+}
 
 const rankList = []
 for (let i = 0; i < 7; i++) {
@@ -537,8 +537,8 @@ export default {
       // searchTableColumns,
       // searchData,
 
-      // barData,
-      // barData2,
+      barData,
+      barData2,
 
       //
       // pieScale,
@@ -618,7 +618,6 @@ export default {
 <style lang="less" scoped>
 .content {
   width: 100%;
-  height: 100%;
   background: url('../../assets/bg.jpg') no-repeat;
   .header {
     width: 100%;
@@ -639,9 +638,13 @@ export default {
     border-left: 1.2px solid #619EF1;
     border-bottom: 1.2px solid #619EF1;
   }
+  .antv-chart-mini{
+    z-index: 999;
+  }
   .middlepart {
-    margin-top: 20px;
-    padding: 8px;
+    padding: 20px;
+    overflow: hidden;
+
     box-sizing: border-box;
     .middlecontent {
       display: flex;
@@ -665,13 +668,13 @@ export default {
             i {
               font-style: normal;
               color: white;
-              font-size: 18px;
+              font-size: 26px;
               font-weight: 800;
             }
             &:first-child {
               width: 50%;
               display: inline-block;
-              padding-left: 30px;
+              padding-left: 8px;
               box-sizing: border-box;
             }
             &:last-child {
@@ -679,7 +682,7 @@ export default {
               width: 49%;
               display: inline-block;
               color: red;
-              font-size: 24px;
+              font-size: 36px;
               font-weight: 800;
             }
           }
@@ -706,11 +709,12 @@ export default {
           box-sizing: border-box;
           span {
             &:first-child {
-              font-size: 18px;
+              font-size: 20px;
               font-weight: 800;
             }
             &:last-child {
               float: right;
+              font-size: 18px;
               i {
                 margin-left: 10px;
               }
@@ -758,12 +762,12 @@ export default {
       .line{
         .title{
           padding: 7px 28px;
-          font-size: 18px;
+          font-size: 22px;
           font-weight: 800;
 
           border-bottom: 1px solid #ccc;
           .line-right{
-            font-size: 14px;
+            font-size: 16px;
             float: right;
             font-weight: normal;
             .round{

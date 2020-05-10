@@ -41,7 +41,7 @@ export default {
         margin-top: 16px;
         span {
           color: rgba(0, 0, 0, .65);
-          font-size: 14px;
+          font-size: 20px;
           line-height: 22px;
           &:first-child{
             margin-right: 23px;
