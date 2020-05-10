@@ -14,7 +14,6 @@
             {{ title }}
           </slot>
         </span>
-
       </div>
       <div class="total" :style="{fontSize:'40px'}">
         <slot name="total" >
@@ -24,7 +23,6 @@
           <span>{{ unit }}</span>
         </slot>
       </div>
-
     </div>
     <div class="chart-card-content">
       <div class="content-fix">
