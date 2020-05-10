@@ -169,10 +169,10 @@
                 :loading="loading"
                 :bordered="false"
                 :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center' }"
+                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
                 title="电站1"
                 total="当前功率"
-                :style="{background:'#f7f7f7',height:'233px',width:'177px'}"
+                :style="{background:'#f7f7f7',height:'233px',width:'100%'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -201,8 +201,8 @@
                 total="当前功率"
                 :bordered="false"
                 :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center' }"
-                :style="{height:'233px',width:'177px'}"
+                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
+                :style="{height:'233px',width:'100%'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -231,8 +231,8 @@
                 :bordered="false"
                 total="当前功率"
                 :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center' }"
-                :style="{height:'233px',width:'177px'}"
+                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
+                :style="{height:'233px',width:'100%'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -261,8 +261,8 @@
                 total="当前功率"
                 :bordered="false"
                 :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center' }"
-                :style="{height:'233px',width:'177px'}"
+                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
+                :style="{height:'233px',width:'100%'}"
               >
                 <div class="veRing">
                   <ve-ring
@@ -523,7 +523,7 @@ export default {
         top: 0,
         textStyle: {
           fontWeight: 'normal',
-          fontSize: 14
+          fontSize: 18
         }
       }
 
@@ -688,7 +688,7 @@ export default {
             display: inline-block;
             font-size: 29px;
             text-align: right;
-            font-weight: 800;
+            font-weight: 655;
             color: #e60012;
           }
           @media screen and (min-width:1700px) {
@@ -699,6 +699,14 @@ export default {
                 padding-right: 4%;
                 font-size: 36px;
               }
+          }
+          @media screen and (max-width:1366px) {
+             .midText-left {
+               font-size: 21px;
+             }
+            >span{
+              font-size: 24px;
+            }
           }
         }
       }
@@ -721,6 +729,7 @@ export default {
           border-bottom: 1px solid #ccc;
           padding: 15px 20px;
           box-sizing: border-box;
+          color: #333333;
           span {
             &:first-child {
               font-size: 20px;

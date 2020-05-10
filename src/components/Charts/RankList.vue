@@ -40,7 +40,7 @@ export default {
       li {
         margin-top: 16px;
         span {
-          color: rgba(0, 0, 0, .65);
+          color:   #333333;;
           font-size: 20px;
           line-height: 22px;
           &:first-child{
