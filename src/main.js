@@ -1,33 +1,42 @@
-// with polyfills
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
+// ie polyfill
+import '@babel/polyfill'
 
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store/'
 import { VueAxios } from './utils/request'
-
+import Print from 'vue-print-nb'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import './plugins/element.js'
+// 引入树形下拉框
+import wl from 'wl-vue-select'
+import 'wl-vue-select/lib/wl-vue-select.css'
+import WlExplorer from 'wl-explorer'
+import 'wl-explorer/lib/wl-explorer.css'
 // mock
-// WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
 import './mock'
 
 import bootstrap from './core/bootstrap'
-import './core/lazy_use'
-// import './permission' // permission control
+import './core/use'
+import './permission' // permission control
 import './utils/filter' // global filter
-import './components/global.less'
-import { Dialog } from '@/components'
+import Prism from 'prismjs'
+import echarts from 'echarts'
 import VCharts from 'v-charts'
+Vue.use(ElementUI)
+Vue.use(wl)
+Vue.use(WlExplorer)
+Prism.highlightAll()
+Vue.config.productionTip = false
 
 Vue.use(VCharts)
-
-Vue.config.productionTip = false
+Vue.prototype.$echarts = echarts
 
 // mount axios Vue.$http and this.$http
 Vue.use(VueAxios)
-Vue.use(Dialog)
-
+Vue.use(Print)
 new Vue({
   router,
   store,

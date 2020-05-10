@@ -1,6 +1,8 @@
 import Menu from 'ant-design-vue/es/menu'
 import Icon from 'ant-design-vue/es/icon'
 
+const { Item, SubMenu } = Menu
+
 export default {
   name: 'SMenu',
   props: {
@@ -70,10 +72,6 @@ export default {
         this.openKeys = latestOpenKey ? [latestOpenKey] : []
       }
     },
-    onSelect ({ item, key, selectedKeys }) {
-      this.selectedKeys = selectedKeys
-      this.$emit('select', { item, key, selectedKeys })
-    },
     updateMenu () {
       const routes = this.$route.matched.concat()
       const { hidden } = this.$route.meta
@@ -102,7 +100,7 @@ export default {
     },
     renderMenuItem (menu) {
       const target = menu.meta.target || null
-      const CustomTag = target && 'a' || 'router-link'
+      const tag = target && 'a' || 'router-link'
       const props = { to: { name: menu.name } }
       const attrs = { href: menu.path, target: menu.meta.target }
 
@@ -116,12 +114,12 @@ export default {
       }
 
       return (
-        <Menu.Item {...{ key: menu.path }}>
-          <CustomTag {...{ props, attrs }}>
+        <Item {...{ key: menu.path }}>
+          <tag {...{ props, attrs }}>
             {this.renderIcon(menu.meta.icon)}
             <span>{menu.meta.title}</span>
-          </CustomTag>
-        </Menu.Item>
+          </tag>
+        </Item>
       )
     },
     renderSubMenu (menu) {
@@ -130,13 +128,13 @@ export default {
         menu.children.forEach(item => itemArr.push(this.renderItem(item)))
       }
       return (
-        <Menu.SubMenu {...{ key: menu.path }}>
+        <SubMenu {...{ key: menu.path }}>
           <span slot="title">
             {this.renderIcon(menu.meta.icon)}
             <span>{menu.meta.title}</span>
           </span>
           {itemArr}
-        </Menu.SubMenu>
+        </SubMenu>
       )
     },
     renderIcon (icon) {
@@ -152,26 +150,31 @@ export default {
   },
 
   render () {
-    const dynamicProps = {
-      props: {
-        mode: this.mode,
-        theme: this.theme,
-        openKeys: this.openKeys,
-        selectedKeys: this.selectedKeys
+    const { mode, theme, menu } = this
+    const props = {
+      mode: mode,
+      theme: theme,
+      openKeys: this.openKeys
+    }
+    const on = {
+      select: obj => {
+        this.selectedKeys = obj.selectedKeys
+        this.$emit('select', obj)
       },
-      on: {
-        openChange: this.onOpenChange,
-        select: this.onSelect
-      }
+      openChange: this.onOpenChange
     }
 
-    const menuTree = this.menu.map(item => {
+    const menuTree = menu.map(item => {
       if (item.hidden) {
         return null
       }
       return this.renderItem(item)
     })
-
-    return (<Menu {...dynamicProps}>{menuTree}</Menu>)
+    // {...{ props, on: on }}
+    return (
+      <Menu vModel={this.selectedKeys} {...{ props, on: on }}>
+        {menuTree}
+      </Menu>
+    )
   }
 }

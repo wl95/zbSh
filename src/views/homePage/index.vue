@@ -1,10 +1,10 @@
 <template>
   <div class="content">
-    <div class="header"><img src="../../assets/header.jpg"/></div>
+    <!-- <div class="header"><img src="../../assets/header.jpg"/></div> -->
     <div class="middlepart">
       <div class="middletop">
         <div class="page-header-index-wide">
-          <a-row :gutter="24">
+          <a-row   :gutter="24">
             <a-col
               :sm="24"
               :md="12"
@@ -618,7 +618,7 @@ export default {
 <style lang="less" scoped>
 .content {
   width: 100%;
-  background: url('../../assets/bg.jpg') no-repeat;
+  // background: url('../../assets/bg.jpg') no-repeat;
   .header {
     width: 100%;
     height: 70px;
@@ -644,7 +644,7 @@ export default {
     z-index: 999;
   }
   .middlepart {
-    padding: 20px;
+    // padding: 20px;
     overflow: hidden;
 
     box-sizing: border-box;
@@ -696,8 +696,8 @@ export default {
                font-size: 24px;
              }
                >span{
-                padding-right: 4%;
-                font-size: 36px;
+                padding-right: 2%;
+                font-size: 33px;
               }
           }
           @media screen and (max-width:1366px) {

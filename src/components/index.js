@@ -29,8 +29,6 @@ import ExceptionPage from '@/components/Exception'
 import StandardFormRow from '@/components/StandardFormRow'
 import ArticleListContent from '@/components/ArticleListContent'
 
-import Dialog from '@/components/Dialog'
-
 export {
   AvatarList,
   Bar,
@@ -60,7 +58,5 @@ export {
   IconSelector,
   TagSelect,
   StandardFormRow,
-  ArticleListContent,
-
-  Dialog
+  ArticleListContent
 }

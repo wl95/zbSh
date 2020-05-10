@@ -1,4 +1,4 @@
-export const PERMISSION_ENUM = {
+const PERMISSION_ENUM = {
   'add': { key: 'add', label: '新增' },
   'delete': { key: 'delete', label: '删除' },
   'edit': { key: 'edit', label: '修改' },
