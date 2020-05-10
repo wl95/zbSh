@@ -316,18 +316,18 @@ import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, Numbe
 import { mixinDevice } from '@/utils/mixin'
 import LinePack from './LinePack'
 
-const barData = []
-const barData2 = []
-for (let i = 0; i < 12; i += 1) {
-  barData.push({
-    x: `${i + 1}月`,
-    y: Math.floor(Math.random() * 1000) + 200
-  })
-  barData2.push({
-    x: `${i + 1}月`,
-    y: Math.floor(Math.random() * 1000) + 200
-  })
-}
+// const barData = []
+// const barData2 = []
+// for (let i = 0; i < 12; i += 1) {
+//   barData.push({
+//     x: `${i + 1}月`,
+//     y: Math.floor(Math.random() * 1000) + 200
+//   })
+//   barData2.push({
+//     x: `${i + 1}月`,
+//     y: Math.floor(Math.random() * 1000) + 200
+//   })
+// }
 
 const rankList = []
 for (let i = 0; i < 7; i++) {
@@ -537,8 +537,8 @@ export default {
       // searchTableColumns,
       // searchData,
 
-      barData,
-      barData2,
+      // barData,
+      // barData2,
 
       //
       // pieScale,
