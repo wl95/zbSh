@@ -24,11 +24,18 @@
         </slot>
       </div>
     </div>
-    <div class="chart-card-content">
-      <div class="content-fix">
-        <slot></slot>
-      </div>
-    </div>
+   
+         <div class="chart-card-content" v-if="total !== null">
+          <div class="content-fix" >
+            <slot></slot>
+          </div>
+        </div>
+         <div class="chart-card-icon" v-else>
+            <slot></slot>
+        </div>
+        
+ 
+ 
     <!-- <div class="chart-card-footer">
       <div class="field">
         <slot name="footer">bbb</slot>
@@ -56,7 +63,7 @@ export default {
     },
     unit: {
        type: String,
-       default: 'MW'
+       default: ''
     }
   }
 }
@@ -123,6 +130,14 @@ export default {
     bottom: 0;
     width: 100%;
   }
+}
+.chart-card-icon{
+  margin-bottom: 12px;
+  position: relative;
+  // height: 100%;
+  width: 90%;
+  // left: 20px;
+  top: -37px;
 }
 
 .total {

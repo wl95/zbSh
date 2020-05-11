@@ -34,6 +34,7 @@
                 :loading="loading"
                 title="实时总功率"
                 :total="12423 | NumberFormat"
+                 unit="MW"
               >
                 <a-tooltip
                   title="实时总功率"
@@ -103,15 +104,25 @@
               <chart-card
                 :loading="loading"
                 title="收益"
-                :total="300000 | NumberFormat"
-                unit="kwh"
               >
                 <a-tooltip title="收益" slot="action">
                   <img src="../../assets/项目管理4.jpg" />
                 </a-tooltip>
-                <div class="home-card">
-                  <mini-area />
+             
+                  <div class="income" >
+                  <div class="income-item">
+                    <img src="../../assets/项目管理6.jpg"/>
+                    <p class="inc-type">当日收益</p>
+                    <p class="inc-money">12,423元</p>
+                  </div>
+                  <div class="income-item">
+                    <img src="../../assets/项目管理5.jpg"/>
+                    <p class="inc-type">累计收益</p>
+                    <p class="inc-money">12,423元</p>
+                  </div>
                 </div>
+                
+                
               </chart-card>
             </a-col>
 
@@ -186,6 +197,17 @@
           <div class="title">
             <span>发电量趋势图</span>
             <div class="line-right">
+              <a-radio-group default-value="a" button-style="solid" size="small">
+                <a-radio-button value="a">
+                  年
+                </a-radio-button>
+                <a-radio-button value="b">
+                  月
+                </a-radio-button>
+                <a-radio-button value="c">
+                  日
+                </a-radio-button>
+              </a-radio-group>
               
             </div>
           </div>
@@ -193,7 +215,7 @@
             :data="lineChartData"
             :colors="colors1"
             :settings="lineChartSettings"
-            height="228px"
+            height="450px"
             :extend="lineChartSettings"
           ></ve-line>
         </div>
@@ -363,7 +385,7 @@ export default {
             formatter: '{a} <br/>{b} : {c} ({d}%)'
         }
       this.colors = ['#3964A5', '#619EF0']
-      this.colors1 = ['#F29253']
+      this.colors1 = ['#619EF0']
       this.graphic1 = [{
           type: 'text',
           left: 'center',
@@ -570,6 +592,35 @@ export default {
     border-left: 1.2px solid #619EF1;
     border-bottom: 1.2px solid #619EF1;
   }
+  .income{
+    // background-color: #619EF1;
+    display: flex;
+    text-align: center;
+    // height: 100%;
+   
+    >div{
+      flex: 1;
+      // background-color: #66c064;
+      // position: absolute;
+      // top:-129px;
+
+       &:last-child{
+         right: 0;
+       }
+   
+    }
+        .inc-type{
+          font-size: 18px;
+          margin-bottom:0;
+
+       }
+       .inc-money{
+         color: red;
+         font-size: 30px;
+         font-weight: 800;
+       }
+  
+  }
   .antv-chart-mini{
     z-index: 999;
   }
@@ -668,14 +719,18 @@ export default {
     }
     .middlebottom {
       height: 479px;
-      display: flex;
+      // display: flex;
       box-sizing: border-box;
       > div {
-        flex: 0.64;
+        // flex: 0.64;
+        float: left;
+        width: 23.7%;
         margin-right: 25px;
         background-color: #fff;
         &:last-child {
-          flex: 2;
+          // flex: 2;
+          width: 74.5%;
+          height: 100%;
           margin-right: 0;
         }
       }
@@ -697,6 +752,16 @@ export default {
           box-sizing: border-box;
           border-left:1px solid #cccccc;
           border-bottom:1px solid #cccccc;
+          p{
+             color:#333333;
+            &:first-child{
+              font-size: 16px;
+              
+            }
+            &:last-child{
+              font-size: 18px;
+            }
+          }
           &:nth-child(odd){
             border-left: 0;
           }
@@ -710,21 +775,18 @@ export default {
         .title{
           padding: 7px 28px;
           font-size: 18px;
-         
-
+          color:#333333;
           border-bottom: 1px solid #ccc;
           .line-right{
-            font-size: 16px;
+            font-size: 14px;
+            color:#333333;
             float: right;
             font-weight: normal;
-            .round{
-              display: inline-block;
-              width: 8px;
-              height: 8px;
-              margin-right: 4px;
-              background-color: #ff6500;
-              border-radius: 5px;
+            .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled){
+              background-color: #619EF1;
+              border-color: #619EF1;
             }
+            
           }
         }
       }

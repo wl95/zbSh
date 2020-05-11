@@ -499,9 +499,8 @@ export const asyncRouterMap = [
       {
         path: '/powerStation/powerStationIndex',
         name: 'powerStationIndex',
-        hidden: true,
         component: () => import('@/views/powerStation/powerStationIndex'),
-        meta: { title: '前台电站管理', keepAlive: true, icon: 'file' }
+        meta: { title: '电站管理', keepAlive: true, icon: 'rocket' , permission: ['PowerStation']}
       },
       // 前台电站详情
       {

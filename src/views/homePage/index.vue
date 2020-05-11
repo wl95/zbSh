@@ -4,22 +4,10 @@
     <div class="middlepart">
       <div class="middletop">
         <div class="page-header-index-wide">
-          <a-row   :gutter="24">
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <chart-card
-                :loading="loading"
-                title="实时总功率"
-                :total="12423 | NumberFormat"
-              >
-                <a-tooltip
-                  title="实时总功率"
-                  slot="action"
-                >
+          <a-row :gutter="24">
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <chart-card :loading="loading" title="实时总功率" :total="12423 | NumberFormat" unit="MW">
+                <a-tooltip title="实时总功率" slot="action">
                   <img src="../../assets/realtime.jpg" />
                 </a-tooltip>
                 <div class="home-card">
@@ -28,45 +16,19 @@
               </chart-card>
             </a-col>
 
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <chart-card
-                :loading="loading"
-                title="装机总容量"
-                :total="12423 | NumberFormat"
-              >
-                <a-tooltip
-                  title="装机总容量"
-                  slot="action"
-                >
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <chart-card :loading="loading" title="装机总容量" :total="12423 | NumberFormat"  unit="MW">
+                <a-tooltip title="装机总容量" slot="action">
                   <img src="../../assets/total.jpg" />
                 </a-tooltip>
                 <div class="home-card">
-
                   <mini-area />
                 </div>
               </chart-card>
             </a-col>
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <chart-card
-                :loading="loading"
-                title="累计发电量"
-                :total="60000 | NumberFormat"
-                unit="kwh"
-              >
-                <a-tooltip
-                  title="累计发电量"
-                  slot="action"
-                >
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <chart-card :loading="loading" title="累计发电量" :total="60000 | NumberFormat" unit="kwh">
+                <a-tooltip title="累计发电量" slot="action">
                   <img src="../../assets/electricity.jpg" />
                 </a-tooltip>
                 <div class="home-card">
@@ -74,18 +36,8 @@
                 </div>
               </chart-card>
             </a-col>
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <chart-card
-                :loading="loading"
-                title="当日发电量"
-                :total="300000 | NumberFormat"
-                unit="kwh"
-              >
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <chart-card :loading="loading" title="当日发电量" :total="300000 | NumberFormat" unit="kwh">
                 <a-tooltip title="当日发电量" slot="action">
                   <img src="../../assets/today.jpg" />
                 </a-tooltip>
@@ -150,140 +102,41 @@
       <div class="middlebottom">
         <div class="pie">
           <div class="left">
-            <a-icon
-              type="left"
-              style="color:white;fontSize:18px"
-            />
+            <a-icon type="left" style="color:white;fontSize:18px" />
           </div>
-          <a-row
-            :gutter="36"
-            class="pieRow"
-          >
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <a-card
-                :loading="loading"
-                :bordered="false"
-                :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
-                title="电站1"
-                total="当前功率"
-                :style="{background:'#f7f7f7',height:'233px',width:'100%'}"
-              >
+          <a-row :gutter="36" class="pieRow">
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <a-card :loading="loading" :bordered="false" :bodyStyle="{ padding: '5px' }" :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }" title="电站1" total="当前功率" :style="{background:'#f7f7f7',height:'233px',width:'100%'}">
                 <div class="veRing">
-                  <ve-ring
-                    :data="chartData1"
-                    :title="veRingTitle"
-                    :legend-visible="false"
-                    :settings="chartSettings"
-                    :graphic="graphic1"
-                    :extend="chartExtend"
-                    :colors="colors"
-                    height="170px"
-                  ></ve-ring>
+                  <ve-ring :data="chartData1" :title="veRingTitle" :legend-visible="false" :settings="chartSettings" :graphic="graphic1" :extend="chartExtend" :colors="colors" height="170px"></ve-ring>
                 </div>
               </a-card>
             </a-col>
 
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <a-card
-                :loading="loading"
-                title="电站2"
-                total="当前功率"
-                :bordered="false"
-                :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
-                :style="{height:'233px',width:'100%'}"
-              >
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <a-card :loading="loading" title="电站2" total="当前功率" :bordered="false" :bodyStyle="{ padding: '5px' }" :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }" :style="{height:'233px',width:'100%'}">
                 <div class="veRing">
-                  <ve-ring
-                    :data="chartData2"
-                    :legend-visible="false"
-                    :settings="chartSettings"
-                    :title="veRingTitle"
-                    :tooltip-visible="false"
-                    :graphic="graphic2"
-                    :colors="colors"
-                    :extend="chartExtend"
-                    height="170px"
-                  ></ve-ring>
+                  <ve-ring :data="chartData2" :legend-visible="false" :settings="chartSettings" :title="veRingTitle" :tooltip-visible="false" :graphic="graphic2" :colors="colors" :extend="chartExtend" height="170px"></ve-ring>
                 </div>
               </a-card>
             </a-col>
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <a-card
-                :loading="loading"
-                title="电站3"
-                :bordered="false"
-                total="当前功率"
-                :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
-                :style="{height:'233px',width:'100%'}"
-              >
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <a-card :loading="loading" title="电站3" :bordered="false" total="当前功率" :bodyStyle="{ padding: '5px' }" :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }" :style="{height:'233px',width:'100%'}">
                 <div class="veRing">
-                  <ve-ring
-                    :data="chartData3"
-                    :title="veRingTitle"
-                    :legend-visible="false"
-                    :settings="chartSettings"
-                    :graphic="graphic3"
-                    :tooltip="tooltip"
-                    :colors="colors"
-                    :extend="chartExtend"
-                    height="170px"
-                  ></ve-ring>
+                  <ve-ring :data="chartData3" :title="veRingTitle" :legend-visible="false" :settings="chartSettings" :graphic="graphic3" :tooltip="tooltip" :colors="colors" :extend="chartExtend" height="170px"></ve-ring>
                 </div>
               </a-card>
             </a-col>
-            <a-col
-              :sm="24"
-              :md="12"
-              :xl="6"
-              :style="{ marginBottom: '24px' }"
-            >
-              <a-card
-                :loading="loading"
-                title="电站4"
-                total="当前功率"
-                :bordered="false"
-                :bodyStyle="{ padding: '5px' }"
-                :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }"
-                :style="{height:'233px',width:'100%'}"
-              >
+            <a-col :sm="24" :md="12" :xl="6" :style="{ marginBottom: '24px' }">
+              <a-card :loading="loading" title="电站4" total="当前功率" :bordered="false" :bodyStyle="{ padding: '5px' }" :headStyle="{ textAlign: 'center',color: '#333333', fontSize: '22px' }" :style="{height:'233px',width:'100%'}">
                 <div class="veRing">
-                  <ve-ring
-                    :title="veRingTitle"
-                    :data="chartData4"
-                    :colors="colors"
-                    :legend-visible="false"
-                    :settings="chartSettings"
-                    :graphic="graphic4"
-                    :extend="chartExtend"
-                    height="170px"
-                  ></ve-ring>
+                  <ve-ring :title="veRingTitle" :data="chartData4" :colors="colors" :legend-visible="false" :settings="chartSettings" :graphic="graphic4" :extend="chartExtend" height="170px"></ve-ring>
                 </div>
               </a-card>
             </a-col>
           </a-row>
           <div class="right">
-            <a-icon
-              type="right"
-              style="color:white;fontSize:18px"
-            />
+            <a-icon type="right" style="color:white;fontSize:18px" />
           </div>
         </div>
         <div class="line">
@@ -294,13 +147,7 @@
               <span>今日发电量</span>
             </p>
           </div>
-          <ve-line
-            :data="lineChartData"
-            :colors="colors1"
-            :settings="lineChartSettings"
-            height="228px"
-            :extend="lineChartSettings"
-          ></ve-line>
+          <ve-line :data="lineChartData" :colors="colors1" :settings="lineChartSettings" height="228px" :extend="lineChartSettings"></ve-line>
         </div>
 
       </div>
@@ -312,22 +159,20 @@
 <script>
 // import moment from 'moment'
 import 'echarts/lib/component/title'
-import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea, Radar } from '@/components'
+import {
+  ChartCard,
+  MiniArea,
+  MiniBar,
+  MiniProgress,
+  RankList,
+  Bar,
+  Trend,
+  NumberInfo,
+  MiniSmoothArea,
+  Radar
+} from '@/components'
 import { mixinDevice } from '@/utils/mixin'
 import LinePack from './LinePack'
-
-// const barData = []
-// const barData2 = []
-// for (let i = 0; i < 12; i += 1) {
-//   barData.push({
-//     x: `${i + 1}月`,
-//     y: Math.floor(Math.random() * 1000) + 200
-//   })
-//   barData2.push({
-//     x: `${i + 1}月`,
-//     y: Math.floor(Math.random() * 1000) + 200
-//   })
-// }
 
 const rankList = []
 for (let i = 0; i < 7; i++) {
@@ -336,84 +181,6 @@ for (let i = 0; i < 7; i++) {
     total: '323,234KW'
   })
 }
-
-// const searchUserData = []
-// for (let i = 0; i < 7; i++) {
-//   searchUserData.push({
-//     x: moment().add(i, 'days').format('YYYY-MM-DD'),
-//     y: Math.ceil(Math.random() * 10)
-//   })
-// }
-// const searchUserScale = [
-//   {
-//     dataKey: 'x',
-//     alias: '时间'
-//   },
-//   {
-//     dataKey: 'y',
-//     alias: '用户数',
-//     min: 0,
-//     max: 10
-//   }]
-
-// const searchTableColumns = [
-//   {
-//     dataIndex: 'index',
-//     title: '排名',
-//     width: 90
-//   },
-//   {
-//     dataIndex: 'keyword',
-//     title: '搜索关键词'
-//   },
-//   {
-//     dataIndex: 'count',
-//     title: '用户数'
-//   },
-//   {
-//     dataIndex: 'range',
-//     title: '周涨幅',
-//     align: 'right',
-//     sorter: (a, b) => a.range - b.range,
-//     scopedSlots: { customRender: 'range' }
-//   }
-// ]
-// const searchData = []
-// for (let i = 0; i < 50; i += 1) {
-//   searchData.push({
-//     index: i + 1,
-//     keyword: `搜索关键词-${i}`,
-//     count: Math.floor(Math.random() * 1000),
-//     range: Math.floor(Math.random() * 100),
-//     status: Math.floor((Math.random() * 10) % 2)
-//   })
-// }
-
-// const DataSet = require('@antv/data-set')
-
-// const sourceData = [
-//   { item: '家用电器', count: 32.2 },
-//   { item: '食用酒水', count: 21 },
-//   { item: '个护健康', count: 17 },
-//   { item: '服饰箱包', count: 13 },
-//   { item: '母婴产品', count: 9 },
-//   { item: '其他', count: 7.8 }
-// ]
-
-// const pieScale = [{
-//   dataKey: 'percent',
-//   min: 0,
-//   formatter: '.0%'
-// }]
-
-// const dv = new DataSet.View().source(sourceData)
-// dv.transform({
-//   type: 'percent',
-//   field: 'count',
-//   dimension: 'item',
-//   as: 'percent'
-// })
-// const pieData = dv.rows
 
 export default {
   name: 'Analysis',
@@ -431,183 +198,171 @@ export default {
     LinePack,
     MiniSmoothArea
   },
-  data () {
-     this.chartExtend = {
-        series: {
-          center: ['50%', '50%']
+  data() {
+    this.chartExtend = {
+      series: {
+        center: ['50%', '50%']
+      }
+    }
+    this.chartSettings = {
+      radius: [55, 40],
+      offsetY: 10,
+      label: {
+        show: false
+      },
+      labelLine: {
+        show: false
+      },
+      hoverAnimation: false
+    }
+    this.lineChartSettings = {
+      legend: {
+        show: false
+      },
+      xAxis: [
+        {
+          axisLine: {
+            lineStyle: {
+              type: 'dashed'
+            }
+          }
         }
-      }
-      this.chartSettings = {
-        radius: [55, 40],
-        offsetY: 10,
-        label: {
-          show: false
-        },
-        labelLine: {
-          show: false
-        },
-        hoverAnimation: false
-      }
-
-      this.lineChartSettings = {
-         legend: {
-           show: false
-         },
-         xAxis: [{
-           axisLine: {
-             lineStyle: {
-               type: 'dashed'
-             }
-
-           }
-         }]
-
-      }
-      this.tooltip = {
-           trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
-        }
-      this.colors = ['#3964A5', '#619EF0']
-      this.colors1 = ['#F29253']
-      this.graphic1 = [{
-          type: 'text',
-          left: 'center',
-          top: '43%',
-          style: {
-            text: '80%',
-            textAlign: 'center',
-            fill: '#999999',
-            fontSize: 21,
-            color: '#4d4f5c'
-          }
-      }]
-      this.graphic2 = [{
-          type: 'text',
-          left: 'center',
-          top: '43%',
-          style: {
-            text: '78%',
-            textAlign: 'center',
-            fill: '#999999',
-            fontSize: 21,
-            color: '#4d4f5c'
-          }
-      }]
-      this.graphic3 = [{
-          type: 'text',
-          left: 'center',
-          top: '43%',
-          style: {
-            text: '45%',
-            textAlign: 'center',
-            fill: '#999999',
-            fontSize: 21,
-            color: '#4d4f5c'
-          }
-      }]
-      this.graphic4 = [{
-          type: 'text',
-          left: 'center',
-          top: '43%',
-          style: {
-            text: '30%',
-            textAlign: 'center',
-            fill: '#999999',
-            fontSize: 21,
-            color: '#4d4f5c'
-          }
-      }]
-      this.veRingTitle = {
-        text: '当前功率',
+      ]
+    }
+    this.tooltip = {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c} ({d}%)'
+    }
+    this.colors = ['#3964A5', '#619EF0']
+    this.colors1 = ['#F29253']
+    this.graphic1 = [
+      {
+        type: 'text',
         left: 'center',
-        top: 0,
-        textStyle: {
-          fontWeight: 'normal',
-          fontSize: 18
+        top: '43%',
+        style: {
+          text: '80%',
+          textAlign: 'center',
+          fill: '#999999',
+          fontSize: 21,
+          color: '#4d4f5c'
         }
       }
+    ]
+    this.graphic2 = [
+      {
+        type: 'text',
+        left: 'center',
+        top: '43%',
+        style: {
+          text: '78%',
+          textAlign: 'center',
+          fill: '#999999',
+          fontSize: 21,
+          color: '#4d4f5c'
+        }
+      }
+    ]
+    this.graphic3 = [
+      {
+        type: 'text',
+        left: 'center',
+        top: '43%',
+        style: {
+          text: '45%',
+          textAlign: 'center',
+          fill: '#999999',
+          fontSize: 21,
+          color: '#4d4f5c'
+        }
+      }
+    ]
+    this.graphic4 = [
+      {
+        type: 'text',
+        left: 'center',
+        top: '43%',
+        style: {
+          text: '30%',
+          textAlign: 'center',
+          fill: '#999999',
+          fontSize: 21,
+          color: '#4d4f5c'
+        }
+      }
+    ]
+    this.veRingTitle = {
+      text: '当前功率',
+      left: 'center',
+      top: 0,
+      textStyle: {
+        fontWeight: 'normal',
+        fontSize: 18
+      }
+    }
 
     return {
       loading: true,
       rankList,
-
-      // 搜索用户数
-      // searchUserData,
-      // searchUserScale,
-      // searchTableColumns,
-      // searchData,
-
-      // barData,
-      // barData2,
-
-      //
-      // pieScale,
-      // pieData,
-      // sourceData,
-      // pieStyle: {
-      //   stroke: '#fff',
-      //   lineWidth: 1
-      // },
       chartData1: {
-          columns: ['日期', '访问用户'],
-          hoverAnimation: false,
-          rows: [
-            { '日期': '1/1', '访问用户': 18 },
-            { '日期': '1/2', '访问用户': 82 }
-          ]
+        columns: ['日期', '访问用户'],
+        hoverAnimation: false,
+        rows: [
+          { 日期: '1/1', 访问用户: 18 },
+          { 日期: '1/2', 访问用户: 82 }
+        ]
       },
       chartData2: {
-          columns: ['日期', '访问用户'],
-          hoverAnimation: false,
-          rows: [
-            { '日期': '1/1', '访问用户': 22 },
-            { '日期': '1/2', '访问用户': 78 }
-          ]
+        columns: ['日期', '访问用户'],
+        hoverAnimation: false,
+        rows: [
+          { 日期: '1/1', 访问用户: 22 },
+          { 日期: '1/2', 访问用户: 78 }
+        ]
       },
       chartData3: {
-          columns: ['日期', '访问用户'],
-          hoverAnimation: false,
-          rows: [
-            { '日期': '1/1', '访问用户': 55 },
-            { '日期': '1/2', '访问用户': 45 }
-          ]
+        columns: ['日期', '访问用户'],
+        hoverAnimation: false,
+        rows: [
+          { 日期: '1/1', 访问用户: 55 },
+          { 日期: '1/2', 访问用户: 45 }
+        ]
       },
       chartData4: {
-          columns: ['日期', '访问用户'],
-          hoverAnimation: false,
-          rows: [
-            { '日期': '1/1', '访问用户': 70 },
-            { '日期': '1/2', '访问用户': 30 }
-          ]
+        columns: ['日期', '访问用户'],
+        hoverAnimation: false,
+        rows: [
+          { 日期: '1/1', 访问用户: 70 },
+          { 日期: '1/2', 访问用户: 30 }
+        ]
       },
       lineChartData: {
         columns: ['日期', '今日发电量'],
         rows: [
-          { '日期': '10:00', '今日发电量': 18 },
-          { '日期': '10:30', '今日发电量': 30 },
-          { '日期': '11:00', '今日发电量': 20 },
-          { '日期': '11:30', '今日发电量': 28 },
-          { '日期': '12:00', '今日发电量': 58 },
-          { '日期': '12:30', '今日发电量': 26 },
-          { '日期': '13:00', '今日发电量': 56 },
-          { '日期': '13:30', '今日发电量': 28 }
+          { 日期: '10:00', 今日发电量: 18 },
+          { 日期: '10:30', 今日发电量: 30 },
+          { 日期: '11:00', 今日发电量: 20 },
+          { 日期: '11:30', 今日发电量: 28 },
+          { 日期: '12:00', 今日发电量: 58 },
+          { 日期: '12:30', 今日发电量: 26 },
+          { 日期: '13:00', 今日发电量: 56 },
+          { 日期: '13:30', 今日发电量: 28 }
         ]
       },
       line: {
-         xAxis: [{
-           axisLine: {
-             lineStyle: {
-               type: 'dashed'
-             }
-
-           }
-         }]
-
+        xAxis: [
+          {
+            axisLine: {
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          }
+        ]
       }
-
     }
   },
-  created () {
+  created() {
     setTimeout(() => {
       this.loading = !this.loading
     }, 1000)
@@ -622,25 +377,25 @@ export default {
   .header {
     width: 100%;
     height: 70px;
-    >img{
+    > img {
       width: 100%;
     }
   }
-  .home-card{
+  .home-card {
     position: relative;
     height: 100%;
   }
-  .home-card:after{
+  .home-card:after {
     content: '';
     position: absolute;
     left: 0;
-    top:-59px;
+    top: -59px;
     width: 102%;
     height: 64px;
-    border-left: 1.2px solid #619EF1;
-    border-bottom: 1.2px solid #619EF1;
+    border-left: 1.2px solid #619ef1;
+    border-bottom: 1.2px solid #619ef1;
   }
-  .antv-chart-mini{
+  .antv-chart-mini {
     z-index: 999;
   }
   .middlepart {
@@ -683,7 +438,7 @@ export default {
             //   font-weight: 800;
             // }
           }
-          >span{
+          > span {
             width: 46%;
             display: inline-block;
             font-size: 29px;
@@ -691,20 +446,20 @@ export default {
             font-weight: 655;
             color: #e60012;
           }
-          @media screen and (min-width:1700px) {
-             .midText-left {
-               font-size: 24px;
-             }
-               >span{
-                padding-right: 2%;
-                font-size: 33px;
-              }
+          @media screen and (min-width: 1700px) {
+            .midText-left {
+              font-size: 24px;
+            }
+            > span {
+              padding-right: 2%;
+              font-size: 33px;
+            }
           }
-          @media screen and (max-width:1366px) {
-             .midText-left {
-               font-size: 21px;
-             }
-            >span{
+          @media screen and (max-width: 1366px) {
+            .midText-left {
+              font-size: 21px;
+            }
+            > span {
               font-size: 24px;
             }
           }
@@ -720,7 +475,7 @@ export default {
       }
       .middle-right {
         width: 24.5%;
-        >.ant-card{
+        > .ant-card {
           height: 460px;
         }
         .right-title {
@@ -782,18 +537,18 @@ export default {
           right: 0;
         }
       }
-      .line{
-        .title{
+      .line {
+        .title {
           padding: 7px 28px;
           font-size: 22px;
           font-weight: 800;
 
           border-bottom: 1px solid #ccc;
-          .line-right{
+          .line-right {
             font-size: 16px;
             float: right;
             font-weight: normal;
-            .round{
+            .round {
               display: inline-block;
               width: 8px;
               height: 8px;
@@ -813,8 +568,8 @@ export default {
     }
   }
 }
-.chart-card-action{
-  img{
+.chart-card-action {
+  img {
     width: 30px;
     margin-left: 18px;
     height: 22px;
